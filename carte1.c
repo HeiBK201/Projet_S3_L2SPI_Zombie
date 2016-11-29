@@ -51,10 +51,6 @@ void voisin_route(int mat[N][N]){
 	for(i=0;i<N;i++){
 		for(j=0;j<N;j++){
 			if(mat[i][j] == 1){
-				//if(bCroit(0,i-1,N-1)&&
-				if(i-1 >=0 && j-1 >= 0)
-					if(mat[i-1][j-1] == 0)
-						mat[i-1][j-1] = voisinR;
 				if(j-1 >= 0)
 					if(mat[i][j-1] == 0)
 						mat[i][j-1] = voisinR;
@@ -67,15 +63,6 @@ void voisin_route(int mat[N][N]){
 				if(i+1 < N)
 					if(mat[i+1][j] == 0)
 						mat[i+1][j] = voisinR;
-				if(i+1 < N && j-1 >= 0)
-					if(mat[i+1][j-1] == 0)
-						mat[i+1][j-1] = voisinR;
-				if(i+1 < N && j+1 < N)
-					if(mat[i+1][j+1] == 0)
-						mat[i+1][j+1] = voisinR;
-				if(i-1 >=0 && j+1 < N)
-					if(mat[i-1][j+1] == 0)
-						mat[i-1][j+1] = voisinR;
 			}
 		}
 	}
@@ -131,7 +118,7 @@ void creer_route(int mat[N][N]){
 }
 	
 
-void afficher_carte(int mat[N][N]){	
+void Placement_Batiment(int mat[N][N]){	
 //Affichage carte
 	//int compteurM = 0; //compteur de maisons
 	int compteurR = 0; //compteur de restaurants
@@ -157,9 +144,7 @@ void afficher_carte(int mat[N][N]){
 		for(j=0;j<N;j++){
 			if(mat[i][j] == 1){ 
 			//Affichage de la route
-				Assert1("probleme matrice route",mat[i][j]==1);
-				printf("%c%c ",route,route);
-				
+				Assert1("probleme matrice route",mat[i][j]==1);		
 			}
 			else if(mat[i][j] == 2){
 			//Affichage des batiments
@@ -170,119 +155,63 @@ void afficher_carte(int mat[N][N]){
 				if((batiment == 'R') && (compteurR == 0) && (compteurtotal == 0)){
 					compteurR ++;
 					compteurtotal++;
-					mat[i][j] = 3;
-					while(compteurCase<3){
-						if(mat[i+m][j] == 0 || mat[i+m][j] == 2){
-							mat[i+m][j] = 3;
-							compteurCase++;
-							m++;
-						}
-						else if(mat[i-m][j] == 0 || mat[i-m][j] == 2){
-							mat[i-m][j] = 3;
-							compteurCase++;
-							m--;
-						}
-						else if(mat[i][j+n] == 0 || mat[i][j+n] == 2){
-							mat[i][j+n] = 3;
-							compteurCase++;
-							n++;
-						}
-						else if(mat[i][j-n] == 0 || mat[i][j-n] == 2){
-							mat[i][j-n] = 3;	
-							compteurCase++;
-							n--;
-						}
-					}
-					compteurCase=0;
-					/*for(m = 1, n = 1; compteurCase<3 ;m++,n++){
-						if(mat[i+m][j] == 0 || mat[i+m][j] == 2){
-							mat[i+m][j] = 3;
-							compteurCase++;
-						}
-						else if(mat[i-m][j] == 0 || mat[i-m][j] == 2){
-							mat[i-m][j] = 3;
-							compteurCase++;
-						}
-						else if(mat[i][j+n] == 0 || mat[i][j+n] == 2){
-							mat[i][j+n] = 3;
-							compteurCase++;
-						}
-						else if(mat[i][j-n] == 0 || mat[i][j-n] == 2){
-							mat[i][j-n] = 3;	
-							compteurCase++;
-						}
-					}*/
-					printf("%c  ",batiment);
-					
+					mat[i][j] = 3;	
 				}
 				else if((batiment == '+') && (compteurClinique == 0) && (compteurtotal == 0)){
 					compteurClinique ++;
 					compteurtotal++;
-					printf("%c  ",batiment);
 					mat[i][j] = 4;
 					
 				} 
 				else if((batiment == 'U') && (compteurU == 0) && (compteurtotal == 0)){
 					compteurU ++;
 					compteurtotal++;
-					printf("%c  ",batiment);
 					mat[i][j] = 5;
 					
 				}
-				else if((batiment == 'E') && (compteurE == 0) && (compteurtotal == 0)){
+				else if((batiment == 'E') && (compteurE <= 1) && (compteurtotal == 0)){
 					compteurE ++;
 					compteurtotal++;	
-					printf("%c  ",batiment);
 					mat[i][j] = 6;
 					
 				}
-				else if((batiment == 'C') && (compteurC == 0) && (compteurtotal == 0)){
+				else if((batiment == 'C') && (compteurC <= 2) && (compteurtotal == 0)){
 					compteurC ++;
 					compteurtotal++;
-					printf("%c  ",batiment);
 					mat[i][j] = 7;
 					
 				}
 				else if((batiment == 'G') && (compteurG == 0) && (compteurtotal == 0)){
 					compteurG ++;
 					compteurtotal++;
-					printf("%c  ",batiment);
 					mat[i][j] = 8;
 					
 				}
 				
 			
 				else if(batiment == '.'){
-					printf("%c  ",batiment);
 					mat[i][j] = 0;
 				}
-				else{
-					printf("%c  ",maison);	
-				}
-			
 			}	
 		
 			else{ // Lorsque mat[i][j] == 0
 				Assert2("probleme matrice autre",mat[i][j] !=1, mat[i][j] !=2);
-				printf("%c  ", reste);
 			}
-		}
-		Ligne();
-		Ligne();
+		}	
 	}
 	
 }
-void test_affichage(int mat[N][N]){
+void affichage_carte(int mat[N][N]){
 	int i;
 	int j;
 	
-	char maison = 'M'; // taille 1
-	char restaurant = 'R'; // taille 4
-	char clinique = '+'; // taille 4
-	char usine = 'U'; //taille 6
-	char epicerie = 'E'; //taille 2
-	char champs = 'C'; // taille 4 ou 6
-	char garage = 'G'; // taille 4
+	char maison = 'M';
+	char restaurant = 'R'; 
+	char clinique = '+'; 
+	char usine = 'U'; 
+	char epicerie = 'E'; 
+	char champs = 'C'; 
+	char garage = 'G'; 
 	char rien = '.';
 	char route = 'X';
 	
@@ -321,12 +250,9 @@ void main2(){
 	creer_route(mat);
 
 	voisin_route(mat);
-	afficher_carte(mat);
-	Ligne();
-	Ligne();
-	Ligne();
-	Ligne();
-	test_affichage(mat);
+	Placement_Batiment(mat);
+	
+	affichage_carte(mat);
 }
 
 
