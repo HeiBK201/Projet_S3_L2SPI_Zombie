@@ -8,27 +8,28 @@ typedef enum {vivre = 0, soin, materiaux, arme, survivant, rien}t_objet_a_trouve
 typedef enum {maison = 0, restaurant, clinique, usine, epicerie, champ, garage}t_type_batiment; // Structure énuméré pour définir chaque type de maison
 
 // Fonction qui va indiquer quel type de bâtiment il y a sur cette case
-int indicateur_case(int num_case)
+int batimentCase(int mat)
 {
-	int id_case;
+	int idCase;
+	idCase = mat;
 	Appel0("Indicateur case");
-	switch(num_case)
+	switch(idCase)
 	{
-		case 2: id_case = maison;break;
-		case 3: id_case = restaurant;break;
-		case 4: id_case = clinique;break;
-		case 5: id_case = usine;break;
-		case 6: id_case = epicerie;break;
-		case 7: id_case = champ;break;
-		case 8: id_case = garage;break;
+		case 2: idCase = maison;break;
+		case 3: idCase = restaurant;break;
+		case 4: idCase = clinique;break;
+		case 5: idCase = usine;break;
+		case 6: idCase = epicerie;break;
+		case 7: idCase = champ;break;
+		case 8: idCase = garage;break;
 	}
 	
 	Appel1("Indicateur case");
-	return id_case;
+	return idCase;
 }
 
 // Fonction qui va définir ce que l'on va trouver dans chaque bâtiments (juste le type pas la quantitée) en fonction du bâtiments
-int type_ressource_batiment(int type_bat)
+int typeRessourceBatiment(int batiment)
 {
 	char * tab_ressource[] = {"vivre", "soin", "materiaux", "arme", "survivant", "rien"};
 	int tab_restaurant[2] = {vivre, survivant};
@@ -38,9 +39,9 @@ int type_ressource_batiment(int type_bat)
 	int tab_champ[3] = {vivre, materiaux, survivant};
 	int tab_garage[3] = {materiaux, arme, survivant};
 	int ressource;
-	Appel0("type_ressource_batiment");
+	Appel0("type ressource");
 	
-	switch(type_bat)
+	switch(batiment)
 	{
 		case 0: printf("Vous rentrez dans une maison qui n'est pas encore explorée, exploration en cours...\n");
 			ressource = nHasard(6);
@@ -71,124 +72,143 @@ int type_ressource_batiment(int type_bat)
 			printf("Objet type: %i\n", ressource);
 			break;
 	}
-	Appel1("type_ressource_batiment");
+	Appel1("type ressource");
 	return ressource;
 }
 
 // Indique quelle ressource à été trouvé
-int ressource_trouve(int type_ressource)
+int typeRessource(int ressource)
 {
-	int nom_ressource;
+	int nomRessource;
 	Appel0("Ressource trouvé(es)");
-	switch(type_ressource)
+	switch(ressource)
 	{
 		case 0: printf("Ressource trouvé: Vivre\n");
-			nom_ressource = vivre;
+			nomRessource = vivre;
 			break;
 		case 1: printf("Ressource trouvé: Soin\n");
-			nom_ressource = soin;
+			nomRessource = soin;
 			break;
 		case 2: printf("Ressource trouvé: Matériaux\n");
-			nom_ressource = materiaux;
+			nomRessource = materiaux;
 			break;
 		case 3: printf("Ressource trouvé: Arme\n");
-			nom_ressource = arme;
+			nomRessource = arme;
 			break;
 		case 4: printf("Ressource trouvé: Survivant\n");
-			nom_ressource = survivant;
+			nomRessource = survivant;
 			break;
 		case 5: printf("Ressource trouvé: Rien\n");
-			nom_ressource = rien;
+			nomRessource = rien;
 			break;
 	}
 	Appel1("Ressource trouvé(es)");
-	return nom_ressource;
+	return nomRessource;
+}
+
+// Fonction qui retourne le nombre de ressources trouvé dans le bâtiment dont le type à été définie dans la fonction ressource_batiment
+int nombreRessource(int nomRessource)
+{
+	int nbRessource;
+	Appel0("nombre_ressource_trouve");
+	switch(nomRessource)
+	{
+		case 0: nbRessource = 20;break;
+		case 1: nbRessource = 20;break;
+		case 2: nbRessource = 10;break;
+		case 3: nbRessource = 1;break;
+		case 4: nbRessource = 1;break;
+		case 5: nbRessource = 0;break;
+	}
+	printf("Quantité: %i\n", nbRessource);
+	Appel1("nombre_ressource_trouve");
+	return nbRessource;
 }
 
 // Chance d'avoir tel ou tel type d'arme en fonction de sa catégorie
-int chance_type_arme()
+int chanceArme()
 {
 	int chance;
-	int type_arme;
-	Appel0("chance_type_arme");
+	int arme;
+	Appel0("chanceArme");
 	chance = nHasard(999);
 	
 	if (chance <= 249) // Machette
 	{
-		type_arme = 0;
+		arme = 0;
 	}
 	else if ((chance >= 250) && (chance <= 449)) // Hache
 	{
-		type_arme = 1;
+		arme = 1;
 	}
 	else if ((chance >= 450) && (chance <= 474)) // Epée
 	{
-		type_arme = 2;
+		arme = 2;
 	}
 	else if ((chance >= 475) && (chance <= 724)) // Arc
 	{
-		type_arme = 3;
+		arme = 3;
 	}
 	else if ((chance >= 725) && (chance <= 924)) // Arbalète
 	{
-		type_arme = 4;
+		arme = 4;
 	}
 	else if ((chance  >= 925) && (chance <= 974)) // Pistolet
 	{
-		type_arme = 5;
+		arme = 5;
 	}
 	else if ((chance >= 975) && (chance <= 998)) // Mitraillette
 	{
-		type_arme = 6;
+		arme = 6;
 	}
 	else if (chance == 999) // Sniper
 	{
-		type_arme = 7;
+		arme = 7;
 	}
 
-	Appel1("chance_type_arme");
-	return type_arme;
+	Appel1("chance arme");
+	return arme;
 }
 
 // Affiche l'arme obtenue
-int affiche_type_arme(int type_arme) 
+int afficherArme(int arme) 
 {
-	int arme;
+	int typeArme;
 	Appel0("Afficher arme");
-	switch(type_arme)
+	switch(arme)
 	{
 		case 0: printf("Arme Obtenue: Machette\n");
-			arme = machette;
+			typeArme = machette;
 			break;
 		case 1: printf("Arme Obtenue: Hache\n");
-			arme = hache;
+			typeArme = hache;
 			break;
 		case 2: printf("Arme Obtenue: Epée\n");
-			arme = epee;
+			typeArme = epee;
 			break;
 		case 3: printf("Arme Obtenue: Arc\n");
-			arme = arc;
+			typeArme = arc;
 			break;
 		case 4: printf("Arme Obtenue: Arbalète\n");
-			arme = arbalete;
+			typeArme = arbalete;
 			break;
 		case 5: printf("Arme Obtenue: Pistolet\n");
-			arme = pistolet;
+			typeArme = pistolet;
 			break;
 		case 6: printf("Arme Obtenue: Mitraillette\n");
-			arme = mitraillette;
+			typeArme = mitraillette;
 			break;
 		case 7: printf("Arme Obtenue: Sniper\n");
-			arme = sniper;
+			typeArme = sniper;
 			break;
 	
 		}
 	Appel1("Afficher arme");
-	return arme;	
+	return typeArme;	
 }
 
 // Fonction qui indique si un bâtiment à été exploré ou non lorsque l'on selectionne un bâtiment
-int fouille_batiment(int statut)
+int fouillerBatiment(int statut)
 {
 	Appel0("Fouille bâtiment");	
 	switch(statut)
@@ -203,25 +223,48 @@ int fouille_batiment(int statut)
 
 
 
-
-
-// Dans le main
+int main2()
+{
 
 	HasardInit();
 	
-	int num_case;
-	int type_bat;
-	int type_ressource;
-	int nom_ressource;
-	int type_arme;
+	int i, j; // Sert pour l'exemple
+	int mat[i][j]; // Sert pour l'exemple
+	int batiment;
+	int ressource;
+	int nomRessource;
+	int nbRessource;
 	int arme;
+	int typeArme;
 
-	type_bat = indicateur_case(num_case);
-	type_ressource = type_ressource_batiment(type_bat);
-	nom_ressource = ressource_trouve(type_ressource);
-	if (nom_ressource == arme)
+	mat[i][j] = 2; // Exemple pour une maison
+	batiment = batimentCase(mat[i][j]);
+	ressource = typeRessourceBatiment(batiment);
+	nomRessource = typeRessource(ressource);
+	nbRessource = nombreRessource(nomRessource);
+	if (nomRessource == 3)
 	{
-		type_arme = chance_type_arme();
-		arme = affiche_type_arme(type_arme);
+		typeArme = chanceArme();
+		arme = afficherArme(typeArme);
 	}
+	
+}	
+	
+	
+	
+	
+void ModuleAmorceR(){
+	//amorce tous les modules (code a  executer une fois pour toutes AVANT d'utiliser un quelconque module depuis le main)
+	OutilAMORCER();//NE PAS DECLASSER:doit toujours etre appele en premier
+	//amorcer TOUS les modules autres que Outil mentionnes dans les include de main.c
+
+}//ModuleAmorceR
+
+int main (int argc, const char * argv[]) {
+	Appel0("");//NE PAS TOUCHER; ce code doit toujours etre place au debut du main
+		ModuleAmorceR();//NE PAS TOUCHER; ce code doit toujours suivre immÃ©diatement Appel0("")
+		main2();
+	Appel1("");//NE PAS TOUCHER; ce code doit toujours etre place a la fin du main, juste avant le return()
+    return 0;
+}//main
 	
