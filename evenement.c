@@ -1,6 +1,6 @@
 #include "Outilcpy.h"
-#include "bibliotheque.h"
 #include "perso.h"
+#include "CreaCarte.h"
 
 //Bibliothèque local
 int i;
@@ -177,4 +177,13 @@ void afficherInventArme()
 		 inventArme.arbalete, inventArme.pistolet, inventArme.mitraillette, inventArme.sniper);
 }
 	
+
+void changerCarte()
+{
+	for(i=0; i<3; i++)
+	{
+		passTour();
+	}
 	
+	choixCarte();
+}	

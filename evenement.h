@@ -9,3 +9,4 @@ void fouiller();
 void attaquer();
 void afficherInventaire();
 void afficherInventArme();
+void changerCarte();

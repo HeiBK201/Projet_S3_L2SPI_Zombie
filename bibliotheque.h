@@ -1,5 +1,6 @@
 #define N 20
 #define Z 50
+#define T 11
 
 //Bibliothèque
 
@@ -21,8 +22,18 @@ typedef enum{massue, machette, hache, epee, arc, arbalete, pistolet, mitraillett
 
 typedef enum{mort, vivant}t_etat;
 
-typedef struct{int hp; int attaque; int nb_materiaux; int nb_soins; int nb_vivres; t_arme arme; t_etat etat; int deplacement; int action;}t_survivant;
+typedef struct{int hp; int attaque; int nb_materiaux; int nb_soins; int nb_vivres; t_arme arme; t_etat etat; int deplacement; int action; int posX; int posY;}t_survivant;
 t_survivant surv[N];
 
-typedef struct{int hp; int attaque; t_etat etat;}t_zombies;
+typedef struct{int hp; int attaque; t_etat etat; int posX; int posY;}t_zombies;
 t_zombies zomb[Z];
+
+//Bâtiments
+/*typedef enum{intact, vide}t_fouille_batiment;
+
+typedef enum {maison = 0, restaurant, clinique, usine, epicerie, champ, garage}t_type_batiment;
+
+typedef enum{vivre = 0, soin, materiaux, arme, survivant, rien}t_objet_a_trouver;
+
+typedef struct{t_fouille_batiment fouilleBat; t_type_batiment typeBat; int posX; int posY;}t_batiment;
+t_batiment batiment;*/

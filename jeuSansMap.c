@@ -2,7 +2,7 @@
 #include "bus.h"
 #include "perso.h"
 #include "evenement.h"
-#include "carte1.h"
+#include "CreaCarte.h"
  
 //Appel des commandes du jeu
 void jeu()
@@ -12,8 +12,9 @@ void jeu()
 	{
 		defStructPerso(j);
 	}
+	choixCarte(); //Initialisation de la carte
 	
-	defStructBus();
+	defStructBus();//Initialisation du bus
 	
 	char commande[20];
 	
@@ -35,7 +36,7 @@ void jeu()
 			casBat();
 		
 		if(strcmp(commande, "carte\n") == 0)
-			carte();
+			afficherCarte();
 			
 		if(strcmp(commande, "passer\n") == 0 || strcmp(commande, "fin du tour\n") == 0 || strcmp(commande, "findutour\n") == 0)
 			passTour();
@@ -48,6 +49,9 @@ void jeu()
 			
 		if(strcmp(commande, "attaquer\n") == 0)
 			attaquer();
+			
+		if(strcmp(commande, "voyage\n") == 0)
+			changerCarte();
 			
 		if(strcmp(commande, "cheat\n") == 0)
 			dev();
