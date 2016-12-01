@@ -163,28 +163,28 @@ void affichage_carte(int mat[N][N]){
 	char champs = 'C'; 
 	char garage = 'G'; 
 	char rien = '.';
-	char route = 'X';
+	char route = '#';
 	
 	for(i=0;i<N;i++){
 		for(j=0;j<N;j++){
 			if(mat[i][j] == 0)
-				printf("%c  ",rien);
+				printf("\033[0m%c  ",rien);
 			if(mat[i][j] == 1)
-				printf("%c%c ",route, route);
+				printf("\033[31m%c  ",route);
 			if(mat[i][j] == 2)
-				printf("%c  ",maison);
+				printf("\033[0m%c  ",maison);
 			if(mat[i][j] == 3)
-				printf("%c  ",restaurant);
+				printf("\033[0m%c  ",restaurant);
 			if(mat[i][j] == 4)
-				printf("%c  ",clinique);
+				printf("\033[0m%c  ",clinique);
 			if(mat[i][j] == 5)
-				printf("%c  ",usine);
+				printf("\033[0m%c  ",usine);
 			if(mat[i][j] == 6)
-				printf("%c  ",epicerie);
+				printf("\033[0m%c  ",epicerie);
 			if(mat[i][j] == 7)
-				printf("%c  ",champs);
+				printf("\033[0m%c  ",champs);
 			if(mat[i][j] == 8)
-				printf("%c  ",garage);
+				printf("\033[0m%c  ",garage);
 		}
 		Ligne();
 		Ligne();

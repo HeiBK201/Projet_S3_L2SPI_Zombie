@@ -2,7 +2,7 @@
 #include "CreaCarte.h"
 #define N 11
 
-void creer_route(int mat[N][N]){
+void creer_route1(int mat[N][N]){
 //Creation des routes
 	int i;
 	int j;
@@ -51,31 +51,15 @@ void creer_route(int mat[N][N]){
 	}
 }
 
-void main2(){
+void carte1(){
 	int mat[N][N];
 	srand(time(NULL));
 	initialisation_mat(mat);
 
-	creer_route(mat);
+	creer_route1(mat);
 
 	voisin_route(mat);
 	Placement_Batiment(mat);
 	
 	affichage_carte(mat);
 }
-
-
-void ModuleAmorceR(){
-	//amorce tous les modules (code a  executer une fois pour toutes AVANT d'utiliser un quelconque module depuis le main)
-	OutilAMORCER();//NE PAS DECLASSER:doit toujours etre appele en premier
-	//amorcer TOUS les modules autres que Outil mentionnes dans les include de main.c
-
-}//ModuleAmorceR
-
-int main (int argc, const char * argv[]) {
-	Appel0("");//NE PAS TOUCHER; ce code doit toujours etre place au debut du main
-		ModuleAmorceR();//NE PAS TOUCHER; ce code doit toujours suivre immÃ©diatement Appel0("")
-		main2();
-	Appel1("");//NE PAS TOUCHER; ce code doit toujours etre place a la fin du main, juste avant le return()
-    return 0;
-}//main
