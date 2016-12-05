@@ -2,6 +2,7 @@
 #include "bus.h"
 #include "perso.h"
 #include "evenement.h"
+#include "CreaCarte.h"
  
 //Appel des commandes du jeu
 void jeu()
@@ -11,21 +12,46 @@ void jeu()
 	{
 		defStructPerso(j);
 	}
+	choixCarte(); //Initialisation de la carte
 	
-	defStructBus();
+	defStructBus();//Initialisation du bus
 	
 	char commande[20];
 	
-	do
+	do//Liste des commandes du jeu
 	{
 		printf("Commande : ");//Affiche 2x Commande : -> A revoir
 		fgets(commande, sizeof commande, stdin);
 	
-		if(strcmp(commande, "ameliorer\n") == 0)
+		if(strcmp(commande, "ameliorer\n") == 0 || strcmp(commande, "amelioration\n") == 0)
 			ameliorer();
+			
+		if(strcmp(commande, "inventaire\n") == 0)
+			afficherInventaire();
 		
-		if(strcmp(commande, "evenement\n") == 0)
-			event();
+		if(strcmp(commande, "inventaire arme\n") == 0 || strcmp(commande, "inventairearme\n") == 0)
+			afficherInventArme();
+		
+		if(strcmp(commande, "batiment\n") == 0)
+			casBat();
+		
+		if(strcmp(commande, "carte\n") == 0)
+			afficherCarte();
+			
+		if(strcmp(commande, "passer\n") == 0 || strcmp(commande, "fin du tour\n") == 0 || strcmp(commande, "findutour\n") == 0)
+			passTour();
+			
+		if(strcmp(commande, "bouger\n") == 0 || strcmp(commande, "deplacer\n") == 0)
+			bouger();
+			
+		if(strcmp(commande, "fouiller\n") == 0)
+			fouiller();
+			
+		if(strcmp(commande, "attaquer\n") == 0)
+			attaquer();
+			
+		if(strcmp(commande, "voyage\n") == 0)
+			changerCarte();
 			
 		if(strcmp(commande, "cheat\n") == 0)
 			dev();
