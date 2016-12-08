@@ -1,11 +1,12 @@
 #include "Outilcpy.h"
-#include "bibliotheque.h"
-
+#include "Mouvement.h"
+#include "CreaCarte.h"
 
 
 //Initialisation des personnages
 void defStructPerso(int j)
 {
+	int i;
 		
 	//Initialisation de N survivant à ces variables suivantes
 	 surv[j].hp = 100;
@@ -17,9 +18,7 @@ void defStructPerso(int j)
 	 surv[j].etat = 1;
 	 surv[j].deplacement = 5;
 	 surv[j].action = 1;
-	 			 
-
-	int i;	
+	 	 			 	
 	for(i=0; i<=Z; i++)
 	{
 		//Initialisation de Z zombies à ces variables suivantes
@@ -32,7 +31,7 @@ void defStructPerso(int j)
 
 
 
-void afficherPerso(int i)
+void afficherInfoPerso(int i)
 {
 	//Affichage des informations du survivant choisit
 	
@@ -79,37 +78,37 @@ void changerPerso()
 					printf("Vie du survivant %i : ", i);
 					scanf("%i", &j);
 					surv[i].hp = j;
-					afficherPerso(i);
+					afficherInfoPerso(i);
 					break;
 			case 2:
 					printf("Attaque du survivant %i : ", i);
 					scanf("%i", &j);
 					surv[i].attaque = j;
-					afficherPerso(i);								
+					afficherInfoPerso(i);								
 					break;
 			case 3: 
 					printf("Nombre de matériaux du survivant %i : ", i);
 					scanf("%i", &j);
 					surv[i].nb_materiaux = j;
-					afficherPerso(i);								
+					afficherInfoPerso(i);								
 					break;
 			case 4: 
 					printf("Nombre de médicament du survivant %i : ", i);
 					scanf("%i", &j);
 					surv[i].nb_soins = j;	
-					afficherPerso(i);							
+					afficherInfoPerso(i);							
 					break;
 			case 5: 
 					printf("Nombre de vivre du survivant %i : ", i);
 					scanf("%i", &j);
 					surv[i].nb_vivres = j;	
-					afficherPerso(i);							
+					afficherInfoPerso(i);							
 					break;
 			case 6: 
 					printf("Arme du survivant %i : ", i);
 					scanf("%i", &j);
 					surv[i].arme = j;
-					afficherPerso(i);
+					afficherInfoPerso(i);
 					break;
 			case 7: break;
 			default: printf("Erreur: votre choix doit etre compris entre 1 et 7\n");
@@ -138,7 +137,7 @@ void dev()
 // Traitement du choix de l'utilisateur 
 		switch(choix)
 		{	
-			case 1: afficherPerso(0); break;
+			case 1: afficherInfoPerso(0); break;
 			case 2: changerPerso(); break;
 			case 3: ; break;
 			case 4: ; break;
@@ -150,3 +149,4 @@ void dev()
 		printf("Au revoir !\n");
 	
 }
+

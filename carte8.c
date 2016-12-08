@@ -56,14 +56,29 @@ void creerRoute8()
 	
 }
 
+void initPosPerso8()
+{
+	for(int i=1; i<N; i++)
+	{
+		if(surv[i].etat != 1)
+		{
+			surv[i].posX = 5;
+			surv[i].posY = 4;
+		}
+	}
+}
 
 void carte8()
 {
 	initialisation(mat);
 	initialisation(carte);
+	initPosPerso8();
 
 	creerRoute8();
 	
 	voisinRoute();
 	placerBatiment();
 }
+
+
+

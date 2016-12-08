@@ -156,6 +156,18 @@ void placerBatiment()//Affichage carte
 	}
 }
 
+
+void afficherPerso()
+{
+	for(int i=1; i<N; i++)
+	{
+		if(surv[i].etat != 1)
+		{
+			carte[surv[i].posX][surv[i].posY] = 9;
+		}
+	}
+}
+
 void afficherCarte()
 {
 	int i,j;
@@ -169,30 +181,50 @@ void afficherCarte()
 	char garage = 'G'; 
 	char rien = '.';
 	char route = '#';
+	char survivant = 'S';
+	char zombie = 'Z';
 	
+	afficherPerso();	
+		
 	for(i=0;i<T;i++){
 		for(j=0;j<T;j++){
 			if(carte[i][j] == 0)
-				printf("\033[0m%c  ",rien);
+				printf("\033[0m%c  ", rien);
 			if(carte[i][j] == 1)
-				printf("\033[31m%c  ",route);
+				printf("\033[31m%c  ", route);
 			if(carte[i][j] == 2)
-				printf("\033[0m%c  ",maison);
+				printf("\033[0m%c  ", maison);
 			if(carte[i][j] == 3)
-				printf("\033[0m%c  ",restaurant);
+				printf("\033[0m%c  ", restaurant);
 			if(carte[i][j] == 4)
-				printf("\033[0m%c  ",clinique);
+				printf("\033[0m%c  ", clinique);
 			if(carte[i][j] == 5)
-				printf("\033[0m%c  ",usine);
+				printf("\033[0m%c  ", usine);
 			if(carte[i][j] == 6)
-				printf("\033[0m%c  ",epicerie);
+				printf("\033[0m%c  ", epicerie);
 			if(carte[i][j] == 7)
-				printf("\033[0m%c  ",champs);
+				printf("\033[0m%c  ", champs);
 			if(carte[i][j] == 8)
-				printf("\033[0m%c  ",garage);
+				printf("\033[0m%c  ", garage);
+			if(carte[i][j] == 9)
+				printf("\033[34m%c  ", survivant);
+			if(carte[i][j] == 10)
+				printf("\033[0m%c  ", zombie);
 		}
 		Ligne();
 		Ligne();
 	}
 	printf("\033[0m");
+}
+
+int verifierRoute(int x, int y)
+{
+	Assert1("Probleme parametre verifierRoute", x==surv[1].posX+1);
+	if(carte[x][y] == 1 ||carte[x][y] == 9)
+	{
+		return 1;
+		Assert1("Probleme if verifier route", carte[x][y] == 1);
+	}
+	else
+		return 0;
 }

@@ -2,6 +2,6 @@
 
 
 void defStructPerso();
-void afficherPerso();
+void afficherInfoPerso(int i);
 void changerPerso();
 void dev();

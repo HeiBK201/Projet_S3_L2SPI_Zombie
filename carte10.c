@@ -62,13 +62,28 @@ void creerRoute10()
 }
 
 
+void initPosPerso10()
+{
+	for(int i=1; i<N; i++)
+	{
+		if(surv[i].etat != 1)
+		{
+			surv[i].posX = 5;
+			surv[i].posY = 4;
+		}
+	}
+}
+
 void carte10()
 {
 	initialisation(mat);
 	initialisation(carte);
+	initPosPerso10();
 
 	creerRoute10();
 	
 	voisinRoute();
 	placerBatiment();
 }
+
+

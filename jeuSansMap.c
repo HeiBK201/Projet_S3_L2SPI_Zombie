@@ -8,7 +8,7 @@
 void jeu()
 {
 	int j;
-	for(j=0; j<=3; j++)//Initialisation du nombre de survivant au début
+	for(j=1; j<=3; j++)//Initialisation du nombre de survivant au début
 	{
 		defStructPerso(j);
 	}
@@ -20,6 +20,8 @@ void jeu()
 	
 	do//Liste des commandes du jeu
 	{
+		srand(time(NULL));
+		
 		printf("Commande : ");//Affiche 2x Commande : -> A revoir
 		fgets(commande, sizeof commande, stdin);
 	
@@ -56,7 +58,7 @@ void jeu()
 		if(strcmp(commande, "cheat\n") == 0)
 			dev();
 	}	
-	while(!(strcmp(commande, "quitter\n")) == 0);
+	while(!strcmp(commande, "quitter\n") == 0);
 }
 
 
@@ -72,6 +74,7 @@ int main (int argc, const char * argv[])
 {
 	Appel0("");//NE PAS TOUCHER; ce code doit toujours être placé au début du main
 		ModuleAmorceR();//NE PAS TOUCHER; ce code doit toujours suivre immédiatement Appel0("")
+	
 	srand(time(NULL));
 	jeu();
 		

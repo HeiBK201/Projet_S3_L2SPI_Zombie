@@ -63,10 +63,23 @@ void creerRoute1()
 	}
 }
 
+void initPosPerso1()
+{
+	for(int i=1; i<N; i++)
+	{
+		if(surv[i].etat != 1)
+		{
+			surv[i].posX = 5;
+			surv[i].posY = 4;
+		}
+	}
+}
+
 void carte1()
 {
 	initialisation(mat);
 	initialisation(carte);
+	initPosPerso1();
 
 	creerRoute1();
 

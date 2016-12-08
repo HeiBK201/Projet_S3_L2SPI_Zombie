@@ -1,5 +1,6 @@
 #include "Outilcpy.h"
 #include "perso.h"
+#include "Mouvement.h"
 #include "CreaCarte.h"
 
 //Bibliothèque local
@@ -82,7 +83,7 @@ void coordonnee()
 void passTour()
 {
 	
-	for(i = 0; i<= N; i++)
+	for(i = 1; i<= N; i++)
 	{
 		if(surv[i].etat == 1)
 		{
@@ -115,8 +116,8 @@ void bouger()
 	
 	if(surv[i].deplacement > 0 && surv[i].etat == 1)
 	{
-		printf("Entrez les coordonnées du survivant\n");
-		coordonnee();
+		printf("Entrez la direction\n");
+		mouvoir(i);
 	
 		//Programme qui nécessite la carte
 		

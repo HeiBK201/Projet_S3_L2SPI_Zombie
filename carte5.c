@@ -77,14 +77,29 @@ void creerRoute5()
 	}
 }
 
+void initPosPerso5()
+{
+	for(int i=1; i<N; i++)
+	{
+		if(surv[i].etat != 1)
+		{
+			surv[i].posX = 5;
+			surv[i].posY = 4;
+		}
+	}
+}
+
 
 void carte5()
 {
 	initialisation(mat);
 	initialisation(carte);
+	initPosPerso5();
 
 	creerRoute5();
 	
 	voisinRoute();
 	placerBatiment();
 }
+
+
