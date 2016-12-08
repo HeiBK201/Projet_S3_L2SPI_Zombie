@@ -56,7 +56,7 @@ void jeu()
 		if(strcmp(commande, "cheat\n") == 0)
 			dev();
 	}	
-	while(!strcmp(commande, "quitter\n") == 0);
+	while(!(strcmp(commande, "quitter\n")) == 0);
 }
 
 
@@ -72,7 +72,7 @@ int main (int argc, const char * argv[])
 {
 	Appel0("");//NE PAS TOUCHER; ce code doit toujours être placé au début du main
 		ModuleAmorceR();//NE PAS TOUCHER; ce code doit toujours suivre immédiatement Appel0("")
-		
+	srand(time(NULL));
 	jeu();
 		
 	Appel1("");//NE PAS TOUCHER; ce code doit toujours être placé à la fin du main, juste avant le return()
