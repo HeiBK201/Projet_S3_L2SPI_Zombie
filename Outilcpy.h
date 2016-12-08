@@ -185,6 +185,7 @@ char *sFois(int nFois,char cMotif);//rend cMotif juxtaposé nFois.
 int bFrontiere8(long zSizeOf);//ySizeOf est un multiple de 8
 char *sG(char* sTexte);//rend sTexte entre guillemets.
 int nHasard(int uBorneLim);//rend un entier dans [0..uBorneLim[.
+void HasardInit();//Initialise la remise à zero du hasard.
 int uHasard(int uBorneMax);//rend un entier dans [1..uBorneMax].
 int bImpair(int iEntier);
 double rInf(double dA,double dB);//inf(dA,dB).
