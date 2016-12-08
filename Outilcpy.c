@@ -761,6 +761,10 @@ int nHasard(int uBorneLim){
 	return(nHasard);
 }//nHasard
 
+void HasardInit(){
+	srand(time(NULL));
+}
+
 int uHasard(int uBorneMax){
 	//rend un nombre aléatoire ds [1..nBorneMax]
 	int uHasard;
