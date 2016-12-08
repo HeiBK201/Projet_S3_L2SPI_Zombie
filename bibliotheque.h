@@ -29,11 +29,11 @@ typedef struct{int hp; int attaque; t_etat etat; int posX; int posY;}t_zombies;
 t_zombies zomb[Z];
 
 //Bâtiments
-/*typedef enum{intact, vide}t_fouille_batiment;
+typedef enum{intact, vide}t_fouille_batiment;
 
 typedef enum {maison = 0, restaurant, clinique, usine, epicerie, champ, garage}t_type_batiment;
 
 typedef enum{vivre = 0, soin, materiaux, arme, survivant, rien}t_objet_a_trouver;
 
 typedef struct{t_fouille_batiment fouilleBat; t_type_batiment typeBat; int posX; int posY;}t_batiment;
-t_batiment batiment;*/
+t_batiment batiment;
