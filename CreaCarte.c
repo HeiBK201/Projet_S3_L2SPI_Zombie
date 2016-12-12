@@ -222,9 +222,14 @@ int verifierRoute(int x, int y)
 	Assert1("Probleme parametre verifierRoute", x==surv[1].posX+1);
 	if(carte[x][y] == 1 ||carte[x][y] == 9)
 	{
-		return 1;
-		Assert1("Probleme if verifier route", carte[x][y] == 1);
+		/*Assert1("Probleme if verifier route", carte[x][y] == 1);
+		return 1;*/
+		printf("x = %i  y = %i\n", x, y);		
 	}
 	else
-		return 0;
+	{
+		/*Assert1("Probleme else verifier route", carte[x][y] == 1);
+		return 0;*/
+		printf("x = %i, y = %i\n", x, y);
+	}
 }

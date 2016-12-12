@@ -50,10 +50,10 @@ carte9.o:carte9.c
 	
 carte10.o:carte10.c
 	gcc -c carte10.c CreaCarte.h -g
-
+	
 ChoixCarte.o:ChoixCarte.c CreaCarte.h
 	 gcc -c ChoixCarte.c CreaCarte.h -g
-	
+
 exe: $(All)
 	gcc -o exe $(All) -lm
 	

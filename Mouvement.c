@@ -1,52 +1,52 @@
 #include "Outilcpy.h"
 #include "CreaCarte.h"
 
-int survivant;
+
 int verifRoute = 0;
 
 
-void bougerHaut()
+void bougerHaut(int i)
 {
-	verifRoute = verifierRoute(surv[survivant].posX, surv[survivant].posY-1);
+	verifRoute = verifierRoute(surv[i].posX, surv[i].posY-1);
 	if(verifRoute == 1)
 	{
-		surv[survivant].posY -= 1;
-		surv[survivant].deplacement--;
+		surv[i].posY -= 1;
+		surv[i].deplacement--;
 	}
 	afficherCarte();
 }
 
-void bougerBas()
+void bougerBas(int i)
 {
-	verifRoute = verifierRoute(surv[survivant].posX, surv[survivant].posY+1);
+	verifRoute = verifierRoute(surv[i].posX, surv[i].posY+1);
 	if(verifRoute == 1)
 	{
-		surv[survivant].posY += 1;
-		surv[survivant].deplacement--;
+		surv[i].posY += 1;
+		surv[i].deplacement--;
 	}
 	afficherCarte();
 }
 
-void bougerDroite()
+void bougerDroite(int i)
 {
-	verifRoute = verifierRoute(surv[survivant].posX+1, surv[survivant].posY);
+	printf("x = %i  y = %i\n", surv[i].posX, surv[i].posY);	
+	verifRoute = verifierRoute(surv[i].posX+1, surv[i].posY);
 	if(verifRoute == 1)
 	{
-		surv[survivant].posX += 1;
-		surv[survivant].deplacement--;
+		surv[i].posX += 1;
+		surv[i].deplacement--;
 	}
 	afficherCarte();
-	printf("%i", verifRoute);
-	Assert1("probleme verif route", verifRoute==1);
+	//Assert1("probleme verif route", verifRoute==1);
 }
 
-void bougerGauche()
+void bougerGauche(int i)
 {
-	verifRoute = verifierRoute(surv[survivant].posX-1, surv[survivant].posY);
+	verifRoute = verifierRoute(surv[i].posX-1, surv[i].posY);
 	if(verifRoute == 1)
 	{
-		surv[survivant].posX -= 1;
-		surv[survivant].deplacement--;
+		surv[i].posX -= 1;
+		surv[i].deplacement--;
 	}
 	afficherCarte();
 }
@@ -55,7 +55,7 @@ void bougerGauche()
 void mouvoir(int i)
 {
 	char commande[20];
-	survivant = i;
+	
 	
 	do//Liste des commandes du jeu
 	{
@@ -64,16 +64,16 @@ void mouvoir(int i)
 		fgets(commande, sizeof commande, stdin);
 		
 		if(strcmp(commande, "haut\n") == 0 || strcmp(commande, "nord\n") == 0)
-			bougerHaut();
+			bougerHaut(i);
 		
 		if(strcmp(commande, "bas\n") == 0 || strcmp(commande, "sud\n") == 0)
-			bougerBas();
+			bougerBas(i);
 			
 		if(strcmp(commande, "droite\n") == 0 || strcmp(commande, "est\n") == 0)
-			bougerDroite();
+			bougerDroite(i);
 			
 		if(strcmp(commande, "gauche\n") == 0 || strcmp(commande, "ouest\n") == 0)
-			bougerGauche();
+			bougerGauche(i);
 			
 	}	
 	while(!strcmp(commande, "quitter\n") == 0 || !strcmp(commande, "sortir\n") == 0 || surv[i].deplacement==0);

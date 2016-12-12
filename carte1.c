@@ -71,6 +71,8 @@ void initPosPerso1()
 		{
 			surv[i].posX = 5;
 			surv[i].posY = 4;
+			
+			printf("x = %i  y = %i\n", surv[i].posX, surv[i].posY);
 		}
 	}
 }

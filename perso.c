@@ -1,5 +1,4 @@
 #include "Outilcpy.h"
-#include "Mouvement.h"
 #include "CreaCarte.h"
 
 
@@ -18,6 +17,8 @@ void defStructPerso(int j)
 	 surv[j].etat = 1;
 	 surv[j].deplacement = 5;
 	 surv[j].action = 1;
+	 surv[j].posX = 2;
+	 surv[j].posY = 3;
 	 	 			 	
 	for(i=0; i<=Z; i++)
 	{

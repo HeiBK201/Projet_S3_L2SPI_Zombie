@@ -2,7 +2,7 @@
 
 void choixCarte()
 {
-	int alea = uHasard(10);
+	int alea = uHasard(1/*0*/);
 	printf("Carte %i :",alea);
 	Ligne();
 	Ligne();
