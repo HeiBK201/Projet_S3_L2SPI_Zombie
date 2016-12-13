@@ -1,11 +1,7 @@
 #include "Outilcpy.h"
+#include "bibliotheque.h"
 
 #define N 11
-
-typedef enum {intact, vide}t_fouille_batiment; // Strcture énuméré pour définir si une maison à déjà été exploré ou non
-typedef enum {massue = 0, machette, hache, epee, arc, arbalete, pistolet, mitraillette, sniper}t_arme; // Structure énuméré pour définir chaque type d'arme
-typedef enum {vivre = 0, soin, materiaux, arme, survivant, rien}t_objet_a_trouver; // Structure énuméré pour définir chaque type d'objet
-typedef enum {maison = 0, restaurant, clinique, usine, epicerie, champ, garage}t_type_batiment; // Structure énuméré pour définir chaque type de maison
 
 // Fonction qui va indiquer quel type de bâtiment il y a sur cette case
 int batimentCase(int mat)
