@@ -1,8 +1,6 @@
 #include "Outilcpy.h"
 #include "bibliotheque.h"
 
-#define N 11
-
 // Fonction qui va indiquer quel type de bâtiment il y a sur cette case
 int batimentCase(int mat)
 {
