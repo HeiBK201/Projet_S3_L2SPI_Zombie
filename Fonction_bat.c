@@ -1,4 +1,4 @@
-#include "Outil.h"
+#include "Outilcpy.h"
 
 #define N 11
 
@@ -220,51 +220,3 @@ int fouillerBatiment(int statut)
 	Appel1("Fouille bâtiment");
 	return statut;
 }
-
-
-
-int main2()
-{
-
-	HasardInit();
-	
-	int i, j; // Sert pour l'exemple
-	int mat[i][j]; // Sert pour l'exemple
-	int batiment;
-	int ressource;
-	int nomRessource;
-	int nbRessource;
-	int arme;
-	int typeArme;
-
-	mat[i][j] = 2; // Exemple pour une maison
-	batiment = batimentCase(mat[i][j]);
-	ressource = typeRessourceBatiment(batiment);
-	nomRessource = typeRessource(ressource);
-	nbRessource = nombreRessource(nomRessource);
-	if (nomRessource == 3)
-	{
-		typeArme = chanceArme();
-		arme = afficherArme(typeArme);
-	}
-	
-}	
-	
-	
-	
-	
-void ModuleAmorceR(){
-	//amorce tous les modules (code a  executer une fois pour toutes AVANT d'utiliser un quelconque module depuis le main)
-	OutilAMORCER();//NE PAS DECLASSER:doit toujours etre appele en premier
-	//amorcer TOUS les modules autres que Outil mentionnes dans les include de main.c
-
-}//ModuleAmorceR
-
-int main (int argc, const char * argv[]) {
-	Appel0("");//NE PAS TOUCHER; ce code doit toujours etre place au debut du main
-		ModuleAmorceR();//NE PAS TOUCHER; ce code doit toujours suivre immÃ©diatement Appel0("")
-		main2();
-	Appel1("");//NE PAS TOUCHER; ce code doit toujours etre place a la fin du main, juste avant le return()
-    return 0;
-}//main
-	
