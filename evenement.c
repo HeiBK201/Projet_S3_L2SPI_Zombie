@@ -83,7 +83,7 @@ void coordonnee()
 int verifRoute = 0;
 
 
-void bougerHaut(int i)
+void bougerGauche(int i)
 {
 	verifRoute = verifierRoute(surv[i].posX, surv[i].posY-1);
 	if(verifRoute == 1)
@@ -91,10 +91,9 @@ void bougerHaut(int i)
 		surv[i].posY -= 1;
 		surv[i].deplacement--;
 	}
-	afficherCarte();
 }
 
-void bougerBas(int i)
+void bougerDroite(int i)
 {
 	verifRoute = verifierRoute(surv[i].posX, surv[i].posY+1);
 	if(verifRoute == 1)
@@ -102,23 +101,21 @@ void bougerBas(int i)
 		surv[i].posY += 1;
 		surv[i].deplacement--;
 	}
-	afficherCarte();
 }
 
-void bougerDroite(int i)
+void bougerBas(int i)
 {
-	printf("x = %i  y = %i\n", surv[i].posX, surv[i].posY);	
 	verifRoute = verifierRoute(surv[i].posX+1, surv[i].posY);
+	verifPerso = verifierPerso(i);
 	if(verifRoute == 1)
 	{
 		surv[i].posX += 1;
+		
 		surv[i].deplacement--;
 	}
-	afficherCarte();
-	//Assert1("probleme verif route", verifRoute==1);
 }
 
-void bougerGauche(int i)
+void bougerHaut(int i)
 {
 	verifRoute = verifierRoute(surv[i].posX-1, surv[i].posY);
 	if(verifRoute == 1)
@@ -126,7 +123,6 @@ void bougerGauche(int i)
 		surv[i].posX -= 1;
 		surv[i].deplacement--;
 	}
-	afficherCarte();
 }
 
 
@@ -166,15 +162,12 @@ void bouger()
 	
 	if(surv[i].deplacement > 0 && surv[i].etat == 1)
 	{
-		printf("Entrez la direction\n");
-	
 		char commande[20];
-	
 	
 		do//Liste des commandes du jeu
 		{
-				
-			printf("Commande : ");//Affiche 2x Commande : -> A revoir
+			printf("Entrez la direction : ");	
+			
 			fgets(commande, sizeof commande, stdin);
 		
 			if(strcmp(commande, "haut\n") == 0 || strcmp(commande, "nord\n") == 0)
@@ -189,9 +182,11 @@ void bouger()
 			if(strcmp(commande, "gauche\n") == 0 || strcmp(commande, "ouest\n") == 0)
 				bougerGauche(i);
 			
+			afficherCarte();
+			
 		}	
-		while(!strcmp(commande, "quitter\n") == 0 || !strcmp(commande, "sortir\n") == 0 || surv[i].deplacement==0);
-	
+		while(!strcmp(commande, "quitter\n") == 0 );
+		printf("x = %i  y = %i\n", surv[i].posX, surv[i].posY);
 		
 	}
 	else

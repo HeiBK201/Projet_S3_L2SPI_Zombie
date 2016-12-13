@@ -161,7 +161,7 @@ void afficherPerso()
 {
 	for(int i=1; i<N; i++)
 	{
-		if(surv[i].etat != 1)
+		if(surv[i].etat == 1)
 		{
 			carte[surv[i].posX][surv[i].posY] = 9;
 		}
@@ -219,17 +219,16 @@ void afficherCarte()
 
 int verifierRoute(int x, int y)
 {
-	Assert1("Probleme parametre verifierRoute", x==surv[1].posX+1);
-	if(carte[x][y] == 1 ||carte[x][y] == 9)
+	printf("x = %i  y = %i\n", x, y);
+	//Assert1("Probleme parametre verifierRoute", x==surv[1].posX+1);
+	if(carte[x][y] == 1 || carte[x][y] == 9)
 	{
-		/*Assert1("Probleme if verifier route", carte[x][y] == 1);
-		return 1;*/
-		printf("x = %i  y = %i\n", x, y);		
+		Assert1("Probleme if verifier route", carte[x][y] == 1);
+		return 1;
+			
 	}
 	else
-	{
-		/*Assert1("Probleme else verifier route", carte[x][y] == 1);
-		return 0;*/
-		printf("x = %i, y = %i\n", x, y);
-	}
+		return 0;	
 }
+
+//verifier perso

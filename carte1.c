@@ -67,7 +67,7 @@ void initPosPerso1()
 {
 	for(int i=1; i<N; i++)
 	{
-		if(surv[i].etat != 1)
+		if(surv[i].etat == 1)
 		{
 			surv[i].posX = 5;
 			surv[i].posY = 4;
