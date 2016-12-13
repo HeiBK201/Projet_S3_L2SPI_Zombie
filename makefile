@@ -1,10 +1,10 @@
 programme: exe
 Carte = CreaCarte.o CreaCarte.h carte1.o carte2.o carte3.o carte4.o carte5.o carte6.o carte7.o carte8.o carte9.o carte10.o ChoixCarte.c
-All = Outilcpy.o perso.o evenement.o bus.o $(Carte) jeuSansMap.o
+All = Outilcpy.o perso.o evenement.o bus.o $(Carte) jeu.o
 
 
-jeuSansMap.o:jeuSansMap.c
-	gcc -c jeuSansMap.c -g
+jeu.o:jeu.c
+	gcc -c jeu.c -g
 	
 bus.o:bus.c
 	gcc -c bus.c -g
