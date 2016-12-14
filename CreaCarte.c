@@ -217,18 +217,42 @@ void afficherCarte()
 	printf("\033[0m");
 }
 
-int verifierRoute(int x, int y)
+//Vérifie si là où le joueur veut aller il y a bien une route ou un survivant
+//->À modifier pour les autres bâtiments et les survivants dans les bâtiments
+int verifierCarte(int x, int y)
 {
-	printf("x = %i  y = %i\n", x, y);
+	int i;
+	//Cas si on cherche une route
 	//Assert1("Probleme parametre verifierRoute", x==surv[1].posX+1);
-	if(carte[x][y] == 1 || carte[x][y] == 9)
+	if(mat[x][y] == 1)//En utilisant la matrice mat on a uniquement les routes
 	{
 		Assert1("Probleme if verifier route", carte[x][y] == 1);
-		return 1;
-			
+		return 1;	
 	}
-	else
-		return 0;	
+	//Cas si on cherche un batiment
+	if(carte[x][y] > 1 && carte[x][y] < 10 && mat[x][y] == 0)
+	{
+		for(i=0; i<Z; i++)
+		{
+			if(infoBatiment[i].posX = x && infoBatiment[i].posY = y)
+				return 2;
+		}
+		return 0;
+	}
+		
 }
 
-//verifier perso
+//Vérifie s'il y a un personnage sur la même case qu'un autre
+//Affiche une route à l'ancienne place du personnage
+//-> Modifier pour afficher les autres bâtiments après avoir fait fouille
+void verifierPerso(int i)
+{
+	int j;
+	for(j=0; j<N; j++)
+	{
+		if(surv[j].posX != surv[i].posX && surv[j].posY != surv[i].posY && j != i)
+		{
+			carte[surv[i].posX][surv[i].posY] = 1;
+		}
+	}
+}

@@ -8,6 +8,7 @@ int j;
 int x;
 int y;
 int nb_arme;
+int verifCarte = 0;
 
 void casBat()//Cas de ressource lors d'une fouille d'un bâtiment
 {
@@ -25,7 +26,7 @@ void casBat()//Cas de ressource lors d'une fouille d'un bâtiment
 		printf("Votre choix : ");
 		scanf("%d",&choix);
 	
-// Traitement du choix de l'utilisateur 
+ // Traitement du choix de l'utilisateur 
 		switch(choix)
 		{	
 			case 1: 
@@ -58,9 +59,7 @@ void casBat()//Cas de ressource lors d'une fouille d'un bâtiment
 			default: printf("Erreur\n");
 		}
 	}
-	while(choix==999);
-	
-	
+	while(choix==999);	
 }
 
 void erreur(int materiaux)
@@ -79,49 +78,22 @@ void coordonnee()
 	scanf("%i", &y);
 }
 
-
-int verifRoute = 0;
-
-
-void bougerGauche(int i)
+void bougerDirection( int haut, int bas, int gauche, int droite)
 {
-	verifRoute = verifierRoute(surv[i].posX, surv[i].posY-1);
-	if(verifRoute == 1)
+	verifCarte = verifierCarte(surv[i].posX-haut+bas, surv[i].pos-gauche+droite);
+	verifierPerso(i);
+	if(verifCarte == 2)
 	{
-		surv[i].posY -= 1;
-		surv[i].deplacement--;
-	}
-}
-
-void bougerDroite(int i)
-{
-	verifRoute = verifierRoute(surv[i].posX, surv[i].posY+1);
-	if(verifRoute == 1)
-	{
-		surv[i].posY += 1;
-		surv[i].deplacement--;
-	}
-}
-
-void bougerBas(int i)
-{
-	verifRoute = verifierRoute(surv[i].posX+1, surv[i].posY);
-	verifPerso = verifierPerso(i);
-	if(verifRoute == 1)
-	{
-		surv[i].posX += 1;
 		
-		surv[i].deplacement--;
 	}
-}
-
-void bougerHaut(int i)
-{
-	verifRoute = verifierRoute(surv[i].posX-1, surv[i].posY);
-	if(verifRoute == 1)
+	if(verifCarte == 1)
 	{
-		surv[i].posX -= 1;
 		surv[i].deplacement--;
+		surv[i].posX -= haut;
+		surv[i].posX += bas;
+		surv[i].posY -= gauche;
+		surv[i].posY += droite;
+
 	}
 }
 
@@ -166,26 +138,29 @@ void bouger()
 	
 		do//Liste des commandes du jeu
 		{
-			printf("Entrez la direction : ");	
+			printf("Entrez la direction : ");
+
+			if(surv[i].deplacement > 0)
+				commande = "stop";
 			
 			fgets(commande, sizeof commande, stdin);
 		
 			if(strcmp(commande, "haut\n") == 0 || strcmp(commande, "nord\n") == 0)
-				bougerHaut(i);
+				bougerDirection(1, 0, 0, 0);
 		
 			if(strcmp(commande, "bas\n") == 0 || strcmp(commande, "sud\n") == 0)
-				bougerBas(i);
-			
-			if(strcmp(commande, "droite\n") == 0 || strcmp(commande, "est\n") == 0)
-				bougerDroite(i);
+				bougerDirection(0, 1, 0, 0);
 			
 			if(strcmp(commande, "gauche\n") == 0 || strcmp(commande, "ouest\n") == 0)
-				bougerGauche(i);
+				bougerDirection(0, 0, 1, 0);
+
+			if(strcmp(commande, "droite\n") == 0 || strcmp(commande, "est\n") == 0)
+				bougerDirection(0, 0, 0, 1);
 			
 			afficherCarte();
 			
 		}	
-		while(!strcmp(commande, "quitter\n") == 0 );
+		while(!strcmp(commande, "stop\n") == 0 );
 		printf("x = %i  y = %i\n", surv[i].posX, surv[i].posY);
 		
 	}
@@ -193,18 +168,16 @@ void bouger()
 		printf("Ce survivant n'a plus de déplacement\n");
 }
 
-void fouiller()
+void fouiller()// Est intégré dans les mouvements
 {
 	printf("Survivant qui doit fouiller : ");
 	scanf("%i", &i);
 	
 	if(surv[i].action > 0 && surv[i].etat == 1)
 	{
-		printf("Entrez les coordonnées du bâtiment\n");
-		coordonnee();
+				
 		
-		//Programme qui nécessite la carte
-		casBat();
+		casBat();//Doit changer de programme
 		surv[i].action = 0;
 	}
 	else
@@ -234,8 +207,7 @@ void afficherInventaire()
 		inventArme.arbalete + inventArme.pistolet + inventArme.mitraillette + inventArme.sniper;
 	
 	printf("Vivres : %i\nSoins : %i\nMatériaux : %i\nArmes : %i\n",
-		 inventaire.vivre, inventaire.soin, inventaire.materiaux, nb_arme);
-	
+		 inventaire.vivre, inventaire.soin, inventaire.materiaux, nb_arme);	
 }	
 	
 void afficherInventArme()

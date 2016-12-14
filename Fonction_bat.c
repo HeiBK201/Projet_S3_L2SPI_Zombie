@@ -2,10 +2,9 @@
 #include "bibliotheque.h"
 
 // Fonction qui va indiquer quel type de bâtiment il y a sur cette case
-int batimentCase(int mat)
+void batimentCase(int idCase)
 {
-	int idCase;
-	idCase = mat;
+	
 	Appel0("Indicateur case");
 	switch(idCase)
 	{
@@ -19,11 +18,11 @@ int batimentCase(int mat)
 	}
 	
 	Appel1("Indicateur case");
-	return idCase;
+	
 }
 
 // Fonction qui va définir ce que l'on va trouver dans chaque bâtiments (juste le type pas la quantitée) en fonction du bâtiments
-int typeRessourceBatiment(int batiment)
+void typeRessourceBatiment(int batiment)
 {
 	char * tab_ressource[] = {"vivre", "soin", "materiaux", "arme", "survivant", "rien"};
 	int tab_restaurant[2] = {vivre, survivant};
@@ -41,11 +40,11 @@ int typeRessourceBatiment(int batiment)
 			ressource = nHasard(6);
 			printf("Objet type: %i\n", ressource);
 			break;
-		case 1: printf("Vous rentrez dans un restaurant qui n'est pas encore explorée, exploration en cours...\n");
+		case 1: printf("Vous rentrez dans un restaurant qui n'est pas encore exploré, exploration en cours...\n");
 			ressource = tab_restaurant[nHasard(2)];
 			printf("Objet type: %i\n", ressource);
 			break;
-		case 2: printf("Vous rentrez dans une clinique qui n'est pas encore exploré, exploration en cours...\n");
+		case 2: printf("Vous rentrez dans une clinique qui n'est pas encore explorée, exploration en cours...\n");
 			ressource = tab_clinique[nHasard(2)];
 			printf("Objet type: %i\n", ressource);
 			break;
@@ -67,11 +66,10 @@ int typeRessourceBatiment(int batiment)
 			break;
 	}
 	Appel1("type ressource");
-	return ressource;
 }
 
 // Indique quelle ressource à été trouvé
-int typeRessource(int ressource)
+void typeRessource(int ressource)
 {
 	int nomRessource;
 	Appel0("Ressource trouvé(es)");
@@ -97,11 +95,10 @@ int typeRessource(int ressource)
 			break;
 	}
 	Appel1("Ressource trouvé(es)");
-	return nomRessource;
 }
 
 // Fonction qui retourne le nombre de ressources trouvé dans le bâtiment dont le type à été définie dans la fonction ressource_batiment
-int nombreRessource(int nomRessource)
+void nombreRessource(int nomRessource)
 {
 	int nbRessource;
 	Appel0("nombre_ressource_trouve");
@@ -116,11 +113,10 @@ int nombreRessource(int nomRessource)
 	}
 	printf("Quantité: %i\n", nbRessource);
 	Appel1("nombre_ressource_trouve");
-	return nbRessource;
 }
 
 // Chance d'avoir tel ou tel type d'arme en fonction de sa catégorie
-int chanceArme()
+void chanceArme()
 {
 	int chance;
 	int arme;
@@ -161,11 +157,10 @@ int chanceArme()
 	}
 
 	Appel1("chance arme");
-	return arme;
 }
 
 // Affiche l'arme obtenue
-int afficherArme(int arme) 
+void afficherArme(int arme) 
 {
 	int typeArme;
 	Appel0("Afficher arme");
@@ -198,11 +193,11 @@ int afficherArme(int arme)
 	
 		}
 	Appel1("Afficher arme");
-	return typeArme;	
+		
 }
 
 // Fonction qui indique si un bâtiment à été exploré ou non lorsque l'on selectionne un bâtiment
-int fouillerBatiment(int statut)
+void fouillerBatiment(int statut)
 {
 	Appel0("Fouille bâtiment");	
 	switch(statut)
@@ -212,5 +207,5 @@ int fouillerBatiment(int statut)
 	}
 	
 	Appel1("Fouille bâtiment");
-	return statut;
+	
 }
