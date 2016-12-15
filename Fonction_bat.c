@@ -1,7 +1,18 @@
-#include "Outilcpy.h"
+/**
+ \file Fonction_bat.c
+ \brief Fonction liés aux bâtiments
+ \author Alexandre SADONNET, Mehdi COHEN et Tristan BOUQUET
+ \version 1.0
+ \date 15 décembre 2015
+*/
+
+#include "Outil.h"
 #include "bibliotheque.h"
 
-// Fonction qui va indiquer quel type de bâtiment il y a sur cette case
+/**
+ \fn void batimentCase(int idCase);
+ \brief Fonction qui va indiquer quel type de bâtiment il y a sur cette case
+*/
 void batimentCase(int idCase)
 {
 	
@@ -21,9 +32,14 @@ void batimentCase(int idCase)
 	
 }
 
-// Fonction qui va définir ce que l'on va trouver dans chaque bâtiments (juste le type pas la quantitée) en fonction du bâtiments
+
+/**
+ \fn void typeRessourceBatiment(int batiment);
+ \brief Fonction qui va définir ce que l'on va trouver dans chaque bâtiments (juste le type pas la quantitée) en fonction du bâtiments
+*/
 void typeRessourceBatiment(int batiment)
 {
+	/*Initialisation*/
 	char * tab_ressource[] = {"vivre", "soin", "materiaux", "arme", "survivant", "rien"};
 	int tab_restaurant[2] = {vivre, survivant};
 	int tab_clinique[2] = {soin, survivant};
@@ -34,6 +50,7 @@ void typeRessourceBatiment(int batiment)
 	int ressource;
 	Appel0("type ressource");
 	
+	/*Traitement*/
 	switch(batiment)
 	{
 		case 0: printf("Vous rentrez dans une maison qui n'est pas encore explorée, exploration en cours...\n");
@@ -68,11 +85,17 @@ void typeRessourceBatiment(int batiment)
 	Appel1("type ressource");
 }
 
-// Indique quelle ressource à été trouvé
+/**
+ \fn void typeRessource(int ressource);
+ \brief Indique quelle ressource à été trouvé
+*/
 void typeRessource(int ressource)
 {
+	/*Initialisation*/
 	int nomRessource;
 	Appel0("Ressource trouvé(es)");
+	
+	/*Traitement*/
 	switch(ressource)
 	{
 		case 0: printf("Ressource trouvé: Vivre\n");
@@ -97,11 +120,17 @@ void typeRessource(int ressource)
 	Appel1("Ressource trouvé(es)");
 }
 
-// Fonction qui retourne le nombre de ressources trouvé dans le bâtiment dont le type à été définie dans la fonction ressource_batiment
+/**
+ \fn void nombreRessource(int nomRessource);
+ \brief Fonction qui retourne le nombre de ressources trouvé dans le bâtiment dont le type à été définie dans la fonction ressource_batiment
+*/
 void nombreRessource(int nomRessource)
 {
+	/*Initialisation*/
 	int nbRessource;
 	Appel0("nombre_ressource_trouve");
+	
+	/*Traitement*/
 	switch(nomRessource)
 	{
 		case 0: nbRessource = 20;break;
@@ -115,12 +144,18 @@ void nombreRessource(int nomRessource)
 	Appel1("nombre_ressource_trouve");
 }
 
-// Chance d'avoir tel ou tel type d'arme en fonction de sa catégorie
+/**
+ \fn void chanceArme();
+ \brief Chance d'avoir tel ou tel type d'arme en fonction de sa catégorie
+*/
 void chanceArme()
 {
+	/*Initialisation*/
 	int chance;
 	int arme;
 	Appel0("chanceArme");
+	
+	/*Traitement*/
 	chance = nHasard(999);
 	
 	if (chance <= 249) // Machette
@@ -159,11 +194,17 @@ void chanceArme()
 	Appel1("chance arme");
 }
 
-// Affiche l'arme obtenue
+/**
+ \fn void afficherArme(int arme);
+ \brief Affiche l'arme obtenue
+*/
 void afficherArme(int arme) 
 {
+	/*Initialisation*/
 	int typeArme;
 	Appel0("Afficher arme");
+	
+	/*Traitement*/
 	switch(arme)
 	{
 		case 0: printf("Arme Obtenue: Machette\n");
@@ -196,10 +237,15 @@ void afficherArme(int arme)
 		
 }
 
-// Fonction qui indique si un bâtiment à été exploré ou non lorsque l'on selectionne un bâtiment
+/**
+ \fn void fouillerBatiment(int statut);
+ \brief Fonction qui indique si un bâtiment à été exploré ou non lorsque l'on selectionne un bâtiment
+*/
 void fouillerBatiment(int statut)
 {
 	Appel0("Fouille bâtiment");	
+	
+	/*Traitement*/
 	switch(statut)
 	{
 		case 0: statut = intact;break;
