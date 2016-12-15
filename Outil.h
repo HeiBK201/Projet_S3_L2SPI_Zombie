@@ -199,7 +199,7 @@ int bLettre(char cCaractere);
 void Ligne();//passe à la ligne.
 int bLigne();//passe à la ligne et rend vrai.
 double rLog(double dN);//logarithme népérien;rend par exemple 1.0 pour rLog(2.718).
-double rLog2(double dN);//logarithme en base 2;rend par exemple 4.0 pour rLog2(16).
+double rLog2(double dN);//logarithme en base 2;rend par exemple 4.0 pour rLog2(16). 
 double rMax(double dA,double dB);//sup(dA,ddB).
 long yMax(long yA,long yB);//sup(yA,yB).
 void MemIntRaz(int piMemOrigine[],int nItemEnTout);
