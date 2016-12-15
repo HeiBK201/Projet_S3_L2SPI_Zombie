@@ -105,7 +105,7 @@ int typeRessourceBatiment()
 int typeRessource()
 {
 	/*Initialisation*/
-	int nomRessource;);
+	int nomRessource;
 	
 	/*Traitement*/
 	switch(ressource)
