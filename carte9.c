@@ -1,10 +1,21 @@
-#include "Outilcpy.h"
+/**
+\file carte9.c
+\brief Création "brute" des routes
+\author Sadonnet Alexandre, Cohen Mehdi & Bouquet Tristan
+\version 1.0
+\date 15/12/2016
+*/
+
+#include "Outil.h"
 #include "CreaCarte.h"
 
 int mat[T][T];
 int carte[T][T];
 
-
+/**
+\fn void creerRoute9();
+\brief Création des routes de la carte 9
+*/
 void creerRoute9()
 {
 //Creation des routes
@@ -60,7 +71,10 @@ void creerRoute9()
 	}
 }
 
-
+/**
+\fn void initPosPerso9();
+\brief Initialisation de la position des survivants de la carte 9
+*/
 void initPosPerso9()
 {
 	for(int i=1; i<N; i++)
@@ -73,6 +87,11 @@ void initPosPerso9()
 	}
 }
 
+
+/**
+\fn void carte9();
+\brief "Traitement" de la carte 9 
+*/
 void carte9()
 {
 	initialisation(mat);
