@@ -26,13 +26,13 @@ int n;
 	
 int batimentCase()
 {
+	/*Traitement*/
 	while(infoBatiment[n].fouilleBat == 1)
 	{
 		n++;
 	}
 	infoBatiment[n].fouilleBat = 1;
 	idCase = infoBatiment[n].typeBat;
-	Appel0("Indicateur case");
 	switch(idCase)
 	{
 		case 2: idCase = maison;break;
@@ -44,7 +44,7 @@ int batimentCase()
 		case 8: idCase = garage;break;
 	}
 	
-	Appel1("Indicateur case");
+
 	
 }
 
@@ -63,7 +63,6 @@ int typeRessourceBatiment()
 	int tab_champ[3] = {vivre, materiaux, survivant};
 	int tab_garage[3] = {materiaux, arme, survivant};
 	int ressource;
-	Appel0("type ressource");
 	
 	/*Traitement*/
 	switch(batiment)
@@ -97,7 +96,6 @@ int typeRessourceBatiment()
 			printf("Objet type: %i\n", ressource);
 			break;
 	}
-	Appel1("type ressource");
 }
 
 /**
@@ -107,8 +105,7 @@ int typeRessourceBatiment()
 int typeRessource()
 {
 	/*Initialisation*/
-	int nomRessource;
-	Appel0("Ressource trouvé(es)");
+	int nomRessource;);
 	
 	/*Traitement*/
 	switch(ressource)
@@ -132,7 +129,6 @@ int typeRessource()
 			nomRessource = rien;
 			break;
 	}
-	Appel1("Ressource trouvé(es)");
 }
 
 /**
@@ -143,7 +139,6 @@ int nombreRessource()
 {
 	/*Initialisation*/
 	int j;
-	Appel0("nombre_ressource_trouve");
 	
 	/*Traitement*/
 	switch(nomRessource)
@@ -169,7 +164,6 @@ int nombreRessource()
 				printf("1 survivant en plus\n");
 		case 5: nbRessource = 0;break;
 	}
-	Appel1("nombre_ressource_trouve");
 }
 
 /**
@@ -181,7 +175,6 @@ int chanceArme()
 	/*Initialisation*/
 	int chance;
 	int arme;
-	Appel0("chanceArme");
 	
 	/*Traitement*/
 	chance = nHasard(999);
@@ -218,8 +211,6 @@ int chanceArme()
 	{
 		arme = 7;
 	}
-
-	Appel1("chance arme");
 }
 
 /**
@@ -230,7 +221,6 @@ int afficherArme()
 {
 	/*Initialisation*/
 	int typeArme;
-	Appel0("Afficher arme");
 	
 	/*Traitement*/
 	switch(arme)
@@ -261,7 +251,6 @@ int afficherArme()
 			break;
 	
 	}
-	Appel1("Afficher arme");
 		
 }
 
