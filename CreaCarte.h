@@ -1,4 +1,4 @@
-#include "Outilcpy.h"
+#include "Outil.h"
 #include "bibliotheque.h"
 
 void initialisation(int mat[T][T]);
