@@ -1,6 +1,6 @@
 programme: exe
 Carte = CreaCarte.o CreaCarte.h carte1.o carte2.o carte3.o carte4.o carte5.o carte6.o carte7.o carte8.o carte9.o carte10.o ChoixCarte.c
-All = Outilcpy.o perso.o evenement.o bus.o $(Carte) jeu.o
+All = Outil.o perso.o evenement.o bus.o $(Carte) jeu.o
 
 
 jeu.o:jeu.c
@@ -12,8 +12,8 @@ bus.o:bus.c
 perso.o:perso.c
 	gcc -c perso.c -g
 
-Outilcpy.o:Outilcpy.c
-	gcc -c Outilcpy.c -g
+Outil.o:Outil.c
+	gcc -c Outil.c -g
 	
 evenement.o:evenement.c
 	gcc -c evenement.c -g
@@ -58,4 +58,4 @@ exe: $(All)
 	gcc -o exe $(All) -lm
 	
 clean:
-	rm *.o
+	rm -rf *.o
