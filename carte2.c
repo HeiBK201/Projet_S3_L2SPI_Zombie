@@ -1,9 +1,21 @@
-#include "Outilcpy.h"
+/**
+\file carte2.c
+\brief Création "brute" des routes
+\author Sadonnet Alexandre, Cohen Mehdi & Bouquet Tristan
+\version 1.0
+\date 15/12/2016
+*/
+
+#include "Outil.h"
 #include "CreaCarte.h"
 
 int mat[T][T];
 int carte[T][T];
 
+/**
+\fn void creerRoute2();
+\brief Création des routes de la carte 2
+*/
 void creerRoute2()
 {
 //Creation des routes
@@ -57,6 +69,10 @@ void creerRoute2()
 
 }
 
+/**
+\fn void initPosPerso2();
+\brief Initialisation de la position des survivants de la carte 2
+*/
 void initPosPerso2()
 {
 	for(int i=1; i<N; i++)
@@ -69,7 +85,10 @@ void initPosPerso2()
 	}
 }
 
-
+/**
+\fn void carte2();
+\brief "Traitement" de la carte 2 
+*/
 void carte2()
 {
 	initialisation(mat);
