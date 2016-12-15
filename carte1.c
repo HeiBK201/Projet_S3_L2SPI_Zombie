@@ -1,9 +1,21 @@
+/**
+\file carte1.c
+\brief Création "brute" des routes
+\author Sadonnet Alexandre, Cohen Mehdi & Bouquet Tristan
+\version 1.0
+\date 15/12/2016
+*/
+
 #include "Outil.h"
 #include "CreaCarte.h"
 
 int mat[T][T];
 int carte[T][T];
 
+/**
+\fn void creerRoute1();
+\brief Création des routes de la carte 1
+*/
 void creerRoute1()
 {
 //Creation des routes
@@ -63,6 +75,10 @@ void creerRoute1()
 	}
 }
 
+/**
+\fn void initPosPerso1();
+\brief Initialisation de la position des survivants de la carte 1
+*/
 void initPosPerso1()
 {
 	for(int i=1; i<N; i++)
@@ -77,6 +93,10 @@ void initPosPerso1()
 	}
 }
 
+/**
+\fn void carte1();
+\brief "Traitement" de la carte 1 
+*/
 void carte1()
 {
 	initialisation(mat);
