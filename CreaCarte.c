@@ -1,11 +1,3 @@
-/**
-\file CreaCarte.c
-\brief Initialisations, placement des bâtiments de façon aléatoire, affichage de la carte.
-\author Sadonnet Alexandre, Cohen Mehdi & Bouquet Tristan
-\version 1.0
-\date 15/12/2016
-*/
-
 #include "Outil.h"
 #include "bibliotheque.h"
 
@@ -14,11 +6,7 @@ int carte[T][T];
 
 char batiment;
 
-/**
-\fn void initialisation(int mat[T][T]);
-\brief initialisation de la matrice
-\param Matrice
-*/
+
 void initialisation(int mat[T][T])//Initialisation de la matrice
 {
 	int i;
@@ -31,25 +19,21 @@ void initialisation(int mat[T][T])//Initialisation de la matrice
 
 }
 
-/**
-\fn char batiAlea();
-\brief Selection d'un caractère aléatoirement, représentant un bâtiment.
-*/
 char batiAlea()//Batiment aleatoire
 {
 	int nb;
-	char maison = 'M';
-	char restaurant = 'R';
-	char clinique = '+';
-	char usine = 'U';
-	char epicerie = 'E';
-	char champs = 'C';
-	char garage = 'G';
+	char maison = 'M'; // taille 1
+	char restaurant = 'R'; // taille 4
+	char clinique = '+'; // taille 4
+	char usine = 'U'; //taille 6
+	char epicerie = 'E'; //taille 2
+	char champs = 'C'; // taille 4 ou 6
+	char garage = 'G'; // taille 4
 	char rien = '.';
 	char batiment;
 	
 
-	nb = uHasard(10);//Nombre aléatoire de 1 à 10 (8 a 10 représentant sur la carte des cases vides)
+	nb = uHasard(10);
 	switch(nb)
 	{
 		case 1:batiment = maison;break;
@@ -64,10 +48,7 @@ char batiAlea()//Batiment aleatoire
 	return batiment;
 }
 
-/**
-\fn void voisinRoute();
-\brief Détection des cases voisines aux routes en affectant une valeur à la matrice pour le placement des bâtiments
-*/
+
 void voisinRoute(){
 //Cherche les cases voisines d'une route
 	int i;
@@ -93,21 +74,16 @@ void voisinRoute(){
 	}
 }
 
-/**
-\fn void placerBatiment();
-\brief Placement aléatoire des bâtiments
-*/
 void placerBatiment()//Affichage carte
 {	
-	//un batiment "spécial" par carte générée
+	//int compteurM = 0; //compteur de maisons
 	int compteurR = 0; //compteur de restaurants
 	int compteurClinique = 0; //compteur de cliniques
 	int compteurU = 0; //compteur d'usines
 	int compteurE = 0; //compteur d'epiceries
 	int compteurC = 0; //compteur de champs
 	int compteurG = 0; //compteur de garages
-	
-	int compteurtotal; //compteur permettant de placer un batiment par ligne (permet une homogénéité de la carte)
+	int compteurtotal;
 
 	
 
@@ -120,13 +96,13 @@ void placerBatiment()//Affichage carte
 		{
 			if(mat[i][j] == 1)
 			{ 
-			//Placement des routes
+			//Affichage de la route
 				Assert1("probleme matrice route",mat[i][j]==1);
 				carte[i][j] = 1;				
 			}
 			else if(mat[i][j] == 2)
 			{
-			//Placement des bâtiments speciaux
+			//Initialisation des bâtiments speciaux
 				Assert1("probleme matrice batiment",mat[i][j]==2);
 				batiment = batiAlea();
 
@@ -174,16 +150,13 @@ void placerBatiment()//Affichage carte
 			}	
 		
 			else{ // Lorsque mat[i][j] == 0
-				Assert1("probleme matrice autre",mat[i][j] == 0);
+				Assert2("probleme matrice autre",mat[i][j] !=1, mat[i][j] !=2);
 			}
 		}
 	}
 }
 
-/**
-\fn void afficherPerso();
-\brief Renvoie la valeur des survivants dans la matrice carte
-*/
+
 void afficherPerso()
 {
 	for(int i=1; i<N; i++)
@@ -195,10 +168,6 @@ void afficherPerso()
 	}
 }
 
-/**
-\fn void afficherCarte();
-\brief Affichage de la carte
-*/
 void afficherCarte()
 {
 	int i,j;
@@ -248,11 +217,8 @@ void afficherCarte()
 	printf("\033[0m");
 }
 
+//Vérifie si là où le joueur veut aller il y a bien une route ou un survivant
 //->À modifier pour les autres bâtiments et les survivants dans les bâtiments
-/**
-\fn int verifierCarte(int x, int y);
-\brief Vérifie si là où le joueur veut aller il y a bien une route ou un survivant
-*/
 int verifierCarte(int x, int y)
 {
 	int i;
@@ -268,27 +234,33 @@ int verifierCarte(int x, int y)
 	{
 		for(i=0; i<Z; i++)
 		{
-			if(infoBatiment[i].posX = x && infoBatiment[i].posY = y)
-				return 2;
+			if(infoBatiment[i].posX == x && infoBatiment[i].posY == y)
+				return 1;
 		}
-		return 0;
+		for(i=0; i<Z; i++)
+		{
+			if(infoBatiment[i].fouilleBat == 0)
+			{
+				infoBatiment[i].posX = x;
+				infoBatiment[i].posY = y;
+				infoBatiment[i].typeBat = carte[x][y];
+				return 2;
+			}
+		}
+		
 	}
 		
 }
 
+//Vérifie s'il y a un personnage sur la même case qu'un autre
+//Affiche une route à l'ancienne place du personnage
 //-> Modifier pour afficher les autres bâtiments après avoir fait fouille
-/**
-\fn void verifierPerso(int i);
-\brief Vérifie s'il y a un personnage sur la même case qu'un autre, Affiche une route à l'ancienne place du personnage
-*/
 void verifierPerso(int i)
 {
 	int j;
 	for(j=0; j<N; j++)
 	{
 		if(surv[j].posX != surv[i].posX && surv[j].posY != surv[i].posY && j != i)
-		{
 			carte[surv[i].posX][surv[i].posY] = 1;
-		}
 	}
 }

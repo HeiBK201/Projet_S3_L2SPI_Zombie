@@ -1,21 +1,10 @@
-/**
-\file carte7.c
-\brief Création "brute" des routes
-\author Sadonnet Alexandre, Cohen Mehdi & Bouquet Tristan
-\version 1.0
-\date 15/12/2016
-*/
-
-#include "Outil.h"
+#include "Outilcpy.h"
 #include "CreaCarte.h"
 
 int mat[T][T];
 int carte[T][T];
 
-/**
-\fn void creerRoute7();
-\brief Création des routes de la carte 7
-*/
+
 void creerRoute7()
 {
 //Creation des routes
@@ -67,10 +56,6 @@ void creerRoute7()
 	}
 }
 
-/**
-\fn void initPosPerso7();
-\brief Initialisation de la position des survivants de la carte 7
-*/
 void initPosPerso7()
 {
 	for(int i=1; i<N; i++)
@@ -83,10 +68,7 @@ void initPosPerso7()
 	}
 }
 
-/**
-\fn void carte7();
-\brief "Traitement" de la carte 7 
-*/
+
 void carte7()
 {
 	initialisation(mat);

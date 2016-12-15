@@ -1,21 +1,10 @@
-/**
-\file carte5.c
-\brief Création "brute" des routes
-\author Sadonnet Alexandre, Cohen Mehdi & Bouquet Tristan
-\version 1.0
-\date 15/12/2016
-*/
-
-#include "Outil.h"
+#include "Outilcpy.h"
 #include "CreaCarte.h"
 
 int mat[T][T];
 int carte[T][T];
 
-/**
-\fn void creerRoute5();
-\brief Création des routes de la carte 5
-*/
+
 void creerRoute5()
 {
 //Creation des routes
@@ -88,10 +77,6 @@ void creerRoute5()
 	}
 }
 
-/**
-\fn void creerRoute5();
-\brief Création des routes de la carte 5
-*/
 void initPosPerso5()
 {
 	for(int i=1; i<N; i++)
@@ -104,10 +89,7 @@ void initPosPerso5()
 	}
 }
 
-/**
-\fn void carte5();
-\brief "Traitement" de la carte 5 
-*/
+
 void carte5()
 {
 	initialisation(mat);

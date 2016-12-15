@@ -1,21 +1,10 @@
-/**
-\file carte8.c
-\brief Création "brute" des routes
-\author Sadonnet Alexandre, Cohen Mehdi & Bouquet Tristan
-\version 1.0
-\date 15/12/2016
-*/
-
-#include "Outil.h"
+#include "Outilcpy.h"
 #include "CreaCarte.h"
 
 int mat[T][T];
 int carte[T][T];
 
-/**
-\fn void creerRoute8();
-\brief Création des routes de la carte 8
-*/
+
 void creerRoute8()
 {
 //Creation des routes
@@ -67,10 +56,6 @@ void creerRoute8()
 	
 }
 
-/**
-\fn void initPosPerso8();
-\brief Initialisation de la position des survivants de la carte 8
-*/
 void initPosPerso8()
 {
 	for(int i=1; i<N; i++)
@@ -83,10 +68,6 @@ void initPosPerso8()
 	}
 }
 
-/**
-\fn void carte8();
-\brief "Traitement" de la carte 8
-*/
 void carte8()
 {
 	initialisation(mat);

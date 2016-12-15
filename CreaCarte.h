@@ -1,4 +1,4 @@
-#include "Outil.h"
+#include "Outilcpy.h"
 #include "bibliotheque.h"
 
 void initialisation(int mat[T][T]);
@@ -8,6 +8,7 @@ void placerBatiment();
 void afficherPerso();
 void afficherCarte();
 int verifierRoute(int x, int y);
+void verifierPerso(int i);
 
 void carte1();
 void creerRoute1();

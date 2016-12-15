@@ -1,6 +1,7 @@
 #include "Outil.h"
 #include "perso.h"
 #include "CreaCarte.h"
+#include "Fonction_bat.h"
 
 //Bibliothèque local
 int i;
@@ -80,11 +81,11 @@ void coordonnee()
 
 void bougerDirection( int haut, int bas, int gauche, int droite)
 {
-	verifCarte = verifierCarte(surv[i].posX-haut+bas, surv[i].pos-gauche+droite);
+	verifCarte = verifierCarte(surv[i].posX-haut+bas, surv[i].posY-gauche+droite);
 	verifierPerso(i);
 	if(verifCarte == 2)
 	{
-		
+		actionFouiller(surv[i].posX-haut+bas, surv[i].posY-gauche+droite);
 	}
 	if(verifCarte == 1)
 	{
@@ -95,6 +96,7 @@ void bougerDirection( int haut, int bas, int gauche, int droite)
 		surv[i].posY += droite;
 
 	}
+	afficherCarte();
 }
 
 
@@ -132,7 +134,7 @@ void bouger()
 	printf("Survivant à bouger : ");
 	scanf("%i", &i);
 	
-	if(surv[i].deplacement > 0 && surv[i].etat == 1)
+	if((surv[i].deplacement > 0 || surv[i].action > 0) && surv[i].etat == 1)
 	{
 		char commande[20];
 	
@@ -140,8 +142,8 @@ void bouger()
 		{
 			printf("Entrez la direction : ");
 
-			if(surv[i].deplacement > 0)
-				commande = "stop";
+			if(surv[i].deplacement = 0)
+				break;
 			
 			fgets(commande, sizeof commande, stdin);
 		
@@ -156,8 +158,6 @@ void bouger()
 
 			if(strcmp(commande, "droite\n") == 0 || strcmp(commande, "est\n") == 0)
 				bougerDirection(0, 0, 0, 1);
-			
-			afficherCarte();
 			
 		}	
 		while(!strcmp(commande, "stop\n") == 0 );
@@ -177,7 +177,7 @@ void fouiller()// Est intégré dans les mouvements
 	{
 				
 		
-		casBat();//Doit changer de programme
+		//Doit changer de programme
 		surv[i].action = 0;
 	}
 	else

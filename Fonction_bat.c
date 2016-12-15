@@ -7,15 +7,31 @@
 */
 
 #include "Outil.h"
+#include "perso.h"
 #include "bibliotheque.h"
 
 /**
  \fn void batimentCase(int idCase);
  \brief Fonction qui va indiquer quel type de bâtiment il y a sur cette case
 */
-void batimentCase(int idCase)
-{
+
+int batiment;
+int ressource;
+int nomRessource;
+int nbRessource;
+int armeTrouver;
+int typeArme;
+int idCase;
+int n;
 	
+int batimentCase()
+{
+	while(infoBatiment[n].fouilleBat == 1)
+	{
+		n++;
+	}
+	infoBatiment[n].fouilleBat = 1;
+	idCase = infoBatiment[n].typeBat;
 	Appel0("Indicateur case");
 	switch(idCase)
 	{
@@ -36,7 +52,7 @@ void batimentCase(int idCase)
  \fn void typeRessourceBatiment(int batiment);
  \brief Fonction qui va définir ce que l'on va trouver dans chaque bâtiments (juste le type pas la quantitée) en fonction du bâtiments
 */
-void typeRessourceBatiment(int batiment)
+int typeRessourceBatiment()
 {
 	/*Initialisation*/
 	char * tab_ressource[] = {"vivre", "soin", "materiaux", "arme", "survivant", "rien"};
@@ -88,7 +104,7 @@ void typeRessourceBatiment(int batiment)
  \fn void typeRessource(int ressource);
  \brief Indique quelle ressource à été trouvé
 */
-void typeRessource(int ressource)
+int typeRessource()
 {
 	/*Initialisation*/
 	int nomRessource;
@@ -123,23 +139,36 @@ void typeRessource(int ressource)
  \fn void nombreRessource(int nomRessource);
  \brief Fonction qui retourne le nombre de ressources trouvé dans le bâtiment dont le type à été définie dans la fonction ressource_batiment
 */
-void nombreRessource(int nomRessource)
+int nombreRessource()
 {
 	/*Initialisation*/
-	int nbRessource;
+	int j;
 	Appel0("nombre_ressource_trouve");
 	
 	/*Traitement*/
 	switch(nomRessource)
 	{
-		case 0: nbRessource = 20;break;
-		case 1: nbRessource = 20;break;
-		case 2: nbRessource = 10;break;
+		case 0: inventaire.vivre += 20;
+				printf("20 vivres en plus\n");
+				break;
+		case 1: inventaire.soin += 20;
+				printf("20 soins en plus\n");
+				break;
+		case 2: inventaire.materiaux += 10;
+				printf("10 matériaux en plus\n");
+				break;
 		case 3: nbRessource = 1;break;
-		case 4: nbRessource = 1;break;
+		case 4: for(j=1; j<N; j++)
+				{
+					if(surv[j].etat != 1)
+					{
+						defStructPerso(j);
+						j=N;
+					}
+				}
+				printf("1 survivant en plus\n");
 		case 5: nbRessource = 0;break;
 	}
-	printf("Quantité: %i\n", nbRessource);
 	Appel1("nombre_ressource_trouve");
 }
 
@@ -147,7 +176,7 @@ void nombreRessource(int nomRessource)
  \fn void chanceArme();
  \brief Chance d'avoir tel ou tel type d'arme en fonction de sa catégorie
 */
-void chanceArme()
+int chanceArme()
 {
 	/*Initialisation*/
 	int chance;
@@ -197,7 +226,7 @@ void chanceArme()
  \fn void afficherArme(int arme);
  \brief Affiche l'arme obtenue
 */
-void afficherArme(int arme) 
+int afficherArme() 
 {
 	/*Initialisation*/
 	int typeArme;
@@ -207,50 +236,49 @@ void afficherArme(int arme)
 	switch(arme)
 	{
 		case 0: printf("Arme Obtenue: Machette\n");
-			typeArme = machette;
+			inventArme.machette++;
 			break;
 		case 1: printf("Arme Obtenue: Hache\n");
-			typeArme = hache;
+			inventArme.hache++;
 			break;
 		case 2: printf("Arme Obtenue: Epée\n");
-			typeArme = epee;
+			inventArme.epee++;
 			break;
 		case 3: printf("Arme Obtenue: Arc\n");
-			typeArme = arc;
+			inventArme.arc++;
 			break;
 		case 4: printf("Arme Obtenue: Arbalète\n");
-			typeArme = arbalete;
+			inventArme.arbalete++;
 			break;
 		case 5: printf("Arme Obtenue: Pistolet\n");
-			typeArme = pistolet;
+			inventArme.pistolet++;
 			break;
 		case 6: printf("Arme Obtenue: Mitraillette\n");
-			typeArme = mitraillette;
+			inventArme.mitraillette++;
 			break;
 		case 7: printf("Arme Obtenue: Sniper\n");
-			typeArme = sniper;
+			inventArme.sniper++;
 			break;
 	
-		}
+	}
 	Appel1("Afficher arme");
 		
 }
 
-/**
- \fn void fouillerBatiment(int statut);
- \brief Fonction qui indique si un bâtiment à été exploré ou non lorsque l'on selectionne un bâtiment
-*/
-void fouillerBatiment(int statut)
+void actionFouiller(int i, int j)
 {
-	Appel0("Fouille bâtiment");	
+ 
+ 	//HasardInit();
+	srand(time(NULL));
 	
-	/*Traitement*/
-	switch(statut)
+	//type du batiment(2 à 8)
+	batiment = batimentCase();
+	ressource = typeRessourceBatiment();
+	nomRessource = typeRessource();
+	nbRessource = nombreRessource();
+	if (nomRessource == 3)
 	{
-		case 0: statut = intact;break;
-		case 1: statut = vide;break;
-	}
-	
-	Appel1("Fouille bâtiment");
-	
+		typeArme = chanceArme();
+		armeTrouver = afficherArme();
+ 	}
 }
