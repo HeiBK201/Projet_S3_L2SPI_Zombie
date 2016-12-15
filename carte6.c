@@ -1,10 +1,21 @@
+/**
+\file carte6.c
+\brief Création "brute" des routes
+\author Sadonnet Alexandre, Cohen Mehdi & Bouquet Tristan
+\version 1.0
+\date 15/12/2016
+*/
+
 #include "Outil.h"
 #include "CreaCarte.h"
 
 int mat[T][T];
 int carte[T][T];
 
-
+/**
+\fn void creerRoute6();
+\brief Création des routes de la carte 6
+*/
 void creerRoute6()
 {
 //Creation des routes
@@ -78,6 +89,10 @@ void creerRoute6()
 	}
 }
 
+/**
+\fn void initPosPerso6();
+\brief Initialisation de la position des survivants de la carte 6
+*/
 void initPosPerso6()
 {
 	for(int i=1; i<N; i++)
@@ -90,7 +105,10 @@ void initPosPerso6()
 	}
 }
 
-
+/**
+\fn void carte6();
+\brief "Traitement" de la carte 6 
+*/
 void carte6()
 {
 	initialisation(mat);
