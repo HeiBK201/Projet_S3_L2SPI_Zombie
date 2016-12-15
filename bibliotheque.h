@@ -26,6 +26,8 @@ typedef struct{ int materiaux; int vivre; int soin;}t_inventaire;
 */
 typedef struct{ int machette; int hache; int epee; int arc; int arbalete; int pistolet; int mitraillette; int sniper;}t_armebus;
 
+
+
 typedef enum{massue, machette, hache, epee, arc, arbalete, pistolet, mitraillette, sniper}t_arme;
 
 typedef enum{mort, vivant}t_etat;
@@ -42,6 +44,8 @@ typedef struct{int hp; int attaque; int nb_materiaux; int nb_soins; int nb_vivre
 */
 typedef struct{int hp; int attaque; t_etat etat; int posX; int posY;}t_zombies;
 
+
+
 typedef enum{intact, vide}t_fouille_batiment;
 
 typedef enum {maison = 0, restaurant, clinique, usine, epicerie, champ, garage}t_type_batiment;
@@ -52,4 +56,5 @@ typedef enum{vivre = 0, soin, materiaux, arme, survivant, rien}t_objet_a_trouver
  \struct t_batiment
  \brief Contient les caractéristiques d'un bâtiment
 */
-typedef struct{t_fouille_batiment fouilleBat; t_type_batiment typeBat; int posX; int posY;}t_batiment;
+typedef struct{t_fouille_batiment fouilleBat; t_type_batiment typeBat; int posX; int posY;}t_infoBatiment;
+t_infoBatiment infoBatiment[Z];
