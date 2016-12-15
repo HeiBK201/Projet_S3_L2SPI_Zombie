@@ -32,7 +32,6 @@ void batimentCase(int idCase)
 	
 }
 
-
 /**
  \fn void typeRessourceBatiment(int batiment);
  \brief Fonction qui va définir ce que l'on va trouver dans chaque bâtiments (juste le type pas la quantitée) en fonction du bâtiments
