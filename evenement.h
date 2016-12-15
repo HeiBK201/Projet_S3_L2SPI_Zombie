@@ -1,4 +1,4 @@
-#include "Outilcpy.h"
+#include "Outil.h"
 
 void casBat();
 void erreur(int materiaux);
