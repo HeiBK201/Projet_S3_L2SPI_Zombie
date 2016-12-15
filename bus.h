@@ -1,4 +1,4 @@
-#include "Outilcpy.h"
+#include "Outil.h"
 
 
 void defStructBus();
