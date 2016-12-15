@@ -1,8 +1,20 @@
-#include "Outilcpy.h"
+/**
+\file ChoixCarte.c
+\brief Selection aléatoire d'une carte à générer
+\author Sadonnet Alexandre, Cohen Mehdi & Bouquet Tristan
+\version 1.0
+\date 15/12/2016
+*/
 
+#include "Outil.h"
+
+/**
+\fn void choixCarte();
+\brief Selection aléatoire d'une carte
+*/
 void choixCarte()
 {
-	int alea = uHasard(1/*0*/);
+	int alea = uHasard(10); // Nombre aléatoire pour la selection de carte
 	printf("Carte %i :",alea);
 	Ligne();
 	Ligne();
