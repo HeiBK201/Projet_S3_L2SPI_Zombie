@@ -1,5 +1,5 @@
 #include "Outil.h"
-#include "CreaCarte.h"
+#include "bibliotheque.h"
 
 
 //Initialisation des personnages
@@ -8,19 +8,21 @@ void defStructPerso(int j)
 	int i;
 		
 	//Initialisation de N survivant à ces variables suivantes
-	 surv[j].hp = 100;
-	 surv[j].attaque = 20;
-	 surv[j].nb_materiaux = 0;
-	 surv[j].nb_soins = 0;
-	 surv[j].nb_vivres = 0;
-	 surv[j].arme = 0;
-	 surv[j].etat = 1;
-	 surv[j].deplacement = 5;
-	 surv[j].action = 1;
-	 surv[j].posX = 2;
-	 surv[j].posY = 3;
+	surv[j].hp = 100;
+	surv[j].attaque = 20;
+	surv[j].nb_materiaux = 0;
+	surv[j].nb_soins = 0;
+	surv[j].nb_vivres = 0;
+	surv[j].arme = 0;
+	surv[j].etat = 1;
+	surv[j].deplacement = 5;
+	surv[j].action = 1;
+	surv[j].posX = 2;
+	surv[j].posY = 3;
+	 
+	printf("%i", surv[j].deplacement);
 	 	 			 	
-	for(i=0; i<=Z; i++)
+	for(i=0; i<Z; i++)
 	{
 		//Initialisation de Z zombies à ces variables suivantes
 		zomb[i].hp = 100;

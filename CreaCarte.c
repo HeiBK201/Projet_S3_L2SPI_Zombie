@@ -97,7 +97,7 @@ void voisinRoute(){
 \fn void placerBatiment();
 \brief Placement aléatoire des bâtiments
 */
-void placerBatiment()
+void placerBatiment()//Affichage carte
 {	
 	//un batiment "spécial" par carte générée
 	int compteurR = 0; //compteur de restaurants

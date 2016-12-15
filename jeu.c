@@ -12,11 +12,16 @@ void jeu()
 	{
 		defStructPerso(j);
 	}
+	printf("%i", surv[j].deplacement);
+	printf("%i", surv[j].hp);
+	
 	choixCarte(); //Initialisation de la carte
 	
 	defStructBus();//Initialisation du bus
 	
 	char commande[20];
+	
+	printf("%i", surv[j].deplacement);
 	
 	do//Liste des commandes du jeu
 	{

@@ -94,6 +94,7 @@ void bougerDirection( int haut, int bas, int gauche, int droite)
 		surv[i].posX += bas;
 		surv[i].posY -= gauche;
 		surv[i].posY += droite;
+		printf("%i\n", surv[i].deplacement);
 
 	}
 	afficherCarte();
