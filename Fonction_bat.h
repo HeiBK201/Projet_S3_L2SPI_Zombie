@@ -1,4 +1,4 @@
-#include "Outilcpy.h"
+#include "Outil.h"
 
 // Fonction qui va indiquer quel type de bâtiment il y a sur cette case
 int batimentCase(int mat)
