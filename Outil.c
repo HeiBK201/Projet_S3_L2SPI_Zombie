@@ -1,4 +1,4 @@
-#include "Outilcpy.h"
+#include "Outil.h"
 
 #define kuAntiSlashZerO 1 //encombrement du caractère "\0" qui délimite les chaînes de caractères
 #define kcEchappemenT1 -61
