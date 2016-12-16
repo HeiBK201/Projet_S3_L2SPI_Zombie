@@ -7,7 +7,7 @@ void voisinRoute();
 void placerBatiment();
 void afficherPerso();
 void afficherCarte();
-int verifierRoute(int x, int y);
+int verifierCarte(int x, int y);
 void verifierPerso(int i);
 
 void carte1();

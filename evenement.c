@@ -83,9 +83,20 @@ void bougerDirection( int haut, int bas, int gauche, int droite)
 {
 	verifCarte = verifierCarte(surv[i].posX-haut+bas, surv[i].posY-gauche+droite);
 	verifierPerso(i);
-	if(verifCarte == 2)
+	
+	if(verifCarte == 3)
 	{
 		actionFouiller(surv[i].posX-haut+bas, surv[i].posY-gauche+droite);
+		verifCarte = 2;
+	}
+	if(verifCarte == 2)
+	{
+		surv[i].action--;
+		surv[i].posX -= haut;
+		surv[i].posX += bas;
+		surv[i].posY -= gauche;
+		surv[i].posY += droite;
+		printf("%i, %i\n", surv[i].deplacement, surv[i].action);
 	}
 	if(verifCarte == 1)
 	{
@@ -94,7 +105,7 @@ void bougerDirection( int haut, int bas, int gauche, int droite)
 		surv[i].posX += bas;
 		surv[i].posY -= gauche;
 		surv[i].posY += droite;
-		printf("%i\n", surv[i].deplacement);
+		printf("%i, %i\n", surv[i].deplacement, surv[i].action);
 
 	}
 	afficherCarte();
@@ -134,16 +145,17 @@ void bouger()
 	
 	printf("Survivant à bouger : ");
 	scanf("%i", &i);
+ 	printf("%i, %i\n", surv[i].deplacement, surv[i].action);
 	
-	if((surv[i].deplacement > 0 || surv[i].action > 0) && surv[i].etat == 1)
+	if( surv[i].etat == 1 && (surv[i].deplacement > 0 || surv[i].action > 0))
 	{
 		char commande[20];
 	
-		do//Liste des commandes du jeu
+		do//Liste des commandes de deplacement
 		{
 			printf("Entrez la direction : ");
 
-			if(surv[i].deplacement = 0)
+			if(surv[i].deplacement == 0 && surv[i].action > 0)
 				break;
 			
 			fgets(commande, sizeof commande, stdin);
@@ -161,8 +173,8 @@ void bouger()
 				bougerDirection(0, 0, 0, 1);
 			
 		}	
-		while(!strcmp(commande, "stop\n") == 0 );
-		printf("x = %i  y = %i\n", surv[i].posX, surv[i].posY);
+		while(!(strcmp(commande, "stop\n") == 0 ));
+		//printf();
 		
 	}
 	else

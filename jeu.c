@@ -12,8 +12,7 @@ void jeu()
 	{
 		defStructPerso(j);
 	}
-	printf("%i", surv[j].deplacement);
-	printf("%i", surv[j].hp);
+	//j est à 4
 	
 	choixCarte(); //Initialisation de la carte
 	
@@ -21,7 +20,6 @@ void jeu()
 	
 	char commande[20];
 	
-	printf("%i", surv[j].deplacement);
 	
 	do//Liste des commandes du jeu
 	{

@@ -262,12 +262,17 @@ int verifierCarte(int x, int y)
 		return 1;	
 	}
 	//Cas si on cherche un batiment
-	if(carte[x][y] > 1 && carte[x][y] < 10 && mat[x][y] == 0)
+	Assert1("Probleme carte > 1", carte[x][y] > 1);
+	Assert1("Probleme carte < 10", carte[x][y] != 10);
+	Assert1("Probleme mat = 0", mat[x][y] == 2);
+	if(carte[x][y] > 1 && carte[x][y] < 10 && mat[x][y] == 2)
 	{
 		for(i=0; i<Z; i++)
 		{
 			if(infoBatiment[i].posX == x && infoBatiment[i].posY == y)
+			{
 				return 1;
+			}
 		}
 		for(i=0; i<Z; i++)
 		{
@@ -276,12 +281,10 @@ int verifierCarte(int x, int y)
 				infoBatiment[i].posX = x;
 				infoBatiment[i].posY = y;
 				infoBatiment[i].typeBat = carte[x][y];
-				return 2;
+				return 3;
 			}
-		}
-		
-	}
-		
+		}		
+	}		
 }
 
  //-> Modifier pour afficher les autres bâtiments après avoir fait fouille
