@@ -71,14 +71,6 @@ void erreur(int materiaux)
 		printf("Modification déjà construite\n");
 }
 
-void coordonnee()
-{
-	printf("Entrez les coordonnées en x : ");
-	scanf("%i", &x);
-	printf("Entrez les coordonnées en y : ");
-	scanf("%i", &y);
-}
-
 void bougerDirection( int haut, int bas, int gauche, int droite)
 {
 	verifCarte = verifierCarte(surv[i].posX-haut+bas, surv[i].posY-gauche+droite);
@@ -142,11 +134,14 @@ void passTour()
 	inventaire.vivre -= bus.consoV;
 	inventaire.soin -= bus.consoS;
 	
-	if(inventaire.vivre < 0 || inventaire.soin < 0)
+	if(inventaire.vivre < 1 || inventaire.soin < 1)
 	{
 		for(i = 0; i<= N; i++)
 		{
-			surv[i].hp -= 20;
+			if(surv[i].etat == 1)
+			{
+				surv[i].hp -= 20;
+			}
 		}
 		if(inventaire.vivre < 0)
 			inventaire.vivre = 0;
@@ -196,22 +191,6 @@ void bouger()
 		printf("Ce survivant n'a plus de déplacement\n");
 }
 
-void fouiller()// Est intégré dans les mouvements
-{
-	printf("Survivant qui doit fouiller : ");
-	scanf("%i", &i);
-	
-	if(surv[i].action > 0 && surv[i].etat == 1)
-	{
-				
-		
-		//Doit changer de programme
-		surv[i].action = 0;
-	}
-	else
-		printf("Ce survivant n'a plus d'action\n");
-}
-
 void attaquer()
 {
 	printf("Survivant qui doit attaquer : ");
@@ -220,7 +199,7 @@ void attaquer()
 	if(surv[i].action > 0 && surv[i].etat == 1)
 	{
 		printf("Entrez les coordonnées de l'ennemie\n");
-		coordonnee();
+		
 		
 		//Programme qui nécessite la carte
 		

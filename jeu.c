@@ -4,6 +4,29 @@
 #include "evenement.h"
 #include "CreaCarte.h"
  
+ 
+void legende()
+{
+ 	printf("S = survivant          Z = zombie           # = Route\n");
+	printf("M = maison             E = epicerie         + = Clinique\n");
+	printf("G = garage             C = champ            U = usine\n");
+}
+ 
+void aide()
+{
+	printf("ameliorer_____________Ameliorer le bus\n");
+	printf("inventaire____________Afficher l'inventaire\n");
+	printf("inventaire arme_______Afficher l'inventaire des armes\n");
+	printf("info survivant________Afficher les information sur un survivant\n");
+	printf("carte_________________Afficher la carte\n");
+	printf("fin du tour___________Mettre fin au tour\n");
+	printf("deplacer______________Déplacer un survivant\n");
+	printf("attaquer______________Attaquer avec un survivant\n");
+	printf("legende_______________Afficher la légende de la carte\n");
+	printf("voyage________________Aller vers une nouvelle ville\n");
+	
+}
+ 
 //Appel des commandes du jeu
 void jeu()
 {
@@ -20,11 +43,14 @@ void jeu()
 	
 	char commande[20];
 	
+	printf("Vous arrivez dans une nouvelle ville ! \n");
+	
 	
 	do//Liste des commandes du jeu
 	{
 		srand(time(NULL));
 		
+		printf("\nPour connaître les commandes tapez 'aide'\n");
 		printf("Commande : ");//Affiche 2x Commande : -> A revoir
 		fgets(commande, sizeof commande, stdin);
 	
@@ -36,6 +62,9 @@ void jeu()
 		
 		if(strcmp(commande, "inventaire arme\n") == 0 || strcmp(commande, "inventairearme\n") == 0)
 			afficherInventArme();
+		
+		if(strcmp(commande, "survivant\n") == 0 || strcmp(commande, "info survivant\n") == 0)
+			afficherInfoPerso(0);
 		
 		if(strcmp(commande, "batiment\n") == 0)
 			casBat();
@@ -49,14 +78,20 @@ void jeu()
 		if(strcmp(commande, "bouger\n") == 0 || strcmp(commande, "deplacer\n") == 0)
 			bouger();
 			
-		if(strcmp(commande, "fouiller\n") == 0)
-			fouiller();
-			
 		if(strcmp(commande, "attaquer\n") == 0)
 			attaquer();
+		
+		if(strcmp(commande, "legende\n") == 0)
+			legende();
+		
+		if(strcmp(commande, "aide\n") == 0)
+			aide();
 			
 		if(strcmp(commande, "voyage\n") == 0)
+		{
+			printf("Vous arrivez dans une nouvelle ville ! \n");
 			changerCarte();
+		}
 			
 		if(strcmp(commande, "cheat\n") == 0)
 			dev();
@@ -64,6 +99,64 @@ void jeu()
 	while(!strcmp(commande, "quitter\n") == 0);
 }
 
+void introduction()
+{
+	system("clear");
+	printf("Le monde est en proie à un désastre, les zombies sont partout!\n");
+	printf("Vous dirigez une petite communautée de 3 personnes et devez les amenez\n");
+	printf("à survivre à cette catastrophe. Équipé d'un bus, voyagez de ville en \n");
+	printf("ville et pillez les pour vous réaprovisionner en nourriture et médicament.\n");
+	Ligne();
+	Ligne();
+	legende();
+	jeu();
+}
+
+void credit()
+{
+	printf("Tout fait par moi\n");
+}
+
+void menu()
+{
+	system("clear");
+	
+	char commande[20];
+	
+	
+	do//Liste des actions du menu
+	{
+		printf("	+--------------------------------------------------------------------------------------+\n");
+		printf("	| ▇▇▇▇▇                       ▇▇▇▇▇                                                    |\n");
+		printf("	|     ▇                         ▇                                                      |\n");
+		printf("	|    ▇                          ▇                                                      |\n");
+		printf("	|   ▇     ▇▇▇   ▇   ▇  ▇▇▇▇     ▇    ▇   ▇  ▇   ▇   ▇▇▇   ▇▇▇▇   ▇▇▇▇▇  ▇▇▇▇     ▇▇▇▇  |\n");
+		printf("	|  ▇     ▇   ▇  ▇▇ ▇▇  ▇   ▇    ▇    ▇▇  ▇  ▇   ▇  ▇   ▇  ▇   ▇  ▇      ▇   ▇   ▇      |\n");
+		printf("	| ▇      ▇   ▇  ▇ ▇ ▇  ▇▇▇▇     ▇    ▇ ▇ ▇   ▇ ▇   ▇▇▇▇▇  ▇   ▇  ▇▇▇▇   ▇▇▇▇     ▇▇▇   |\n");
+		printf("	| ▇      ▇   ▇  ▇   ▇  ▇   ▇    ▇    ▇  ▇▇   ▇ ▇   ▇   ▇  ▇   ▇  ▇      ▇   ▇       ▇  |\n");
+		printf("	| ▇▇▇▇▇   ▇▇▇   ▇   ▇  ▇▇▇▇   ▇▇▇▇▇  ▇   ▇    ▇    ▇   ▇  ▇▇▇▇   ▇▇▇▇▇  ▇   ▇   ▇▇▇▇   |\n");
+		printf("	+--------------------------------------------------------------------------------------+\n");
+		printf("		-Nouvelle partie				-Charger partie\n");
+		Ligne();
+		printf("		-Crédits					-Quitter\n");
+		
+		fgets(commande, sizeof commande, stdin);
+	
+		if(strcmp(commande, "nouveau\n") == 0 || strcmp(commande, "1\n") == 0)
+			introduction();
+		
+		if(strcmp(commande, "charger\n") == 0 || strcmp(commande, "2\n") == 0)
+			printf("La sauvegarde sera bientôt disponible, nous sommes en train de fouetter le responsable de ce retard\n");
+			
+		if(strcmp(commande, "crédits\n") == 0 || strcmp(commande, "3\n") == 0)
+			credit();
+			
+		if(strcmp(commande, "quitter\n") == 0 || strcmp(commande, "4\n") == 0)
+			system("exit");
+	}	
+	while(!strcmp(commande, "Message super bien caché, tu ne le devineras jamais\n") == 0);
+	printf("... Oh Wait !");
+}
 
 void ModuleAmorceR()
 {
@@ -79,7 +172,7 @@ int main (int argc, const char * argv[])
 		ModuleAmorceR();//NE PAS TOUCHER; ce code doit toujours suivre immédiatement Appel0("")
 	
 	srand(time(NULL));
-	jeu();
+	menu();
 		
 	Appel1("");//NE PAS TOUCHER; ce code doit toujours être placé à la fin du main, juste avant le return()
     return 0;

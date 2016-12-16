@@ -17,8 +17,6 @@ void defStructPerso(int j)
 	surv[j].etat = 1;
 	surv[j].deplacement = 5;
 	surv[j].action = 1;
-	 
-	printf("%i", surv[j].deplacement);
 	 	 			 	
 	for(i=0; i<Z; i++)
 	{

@@ -14,8 +14,7 @@
 */
 void choixCarte()
 {
-	int alea = uHasard(11); // Nombre aléatoire pour la selection de carte
-	printf("Carte %i :",alea);
+	int alea = uHasard(10); // Nombre aléatoire pour la selection de carte
 	Ligne();
 	Ligne();
 	switch(alea)

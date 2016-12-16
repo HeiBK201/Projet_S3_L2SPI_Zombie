@@ -213,32 +213,35 @@ void afficherCarte()
 	char survivant = 'S';
 	char zombie = 'Z';
 	
+	system("clear");
+	
 	afficherPerso();	
 		
 	for(i=0;i<T;i++){
+		printf("	");
 		for(j=0;j<T;j++){
 			if(carte[i][j] == 0)
-				printf("\033[0m%c  ", rien);
+				printf(" \033[0m%c ", rien);
 			if(carte[i][j] == 1)
-				printf("\033[31m%c  ", route);
+				printf(" \033[31m%c ", route);
 			if(carte[i][j] == 2)
-				printf("\033[0m%c  ", maison);
+				printf(" \033[0m%c ", maison);
 			if(carte[i][j] == 3)
-				printf("\033[0m%c  ", restaurant);
+				printf(" \033[0m%c ", restaurant);
 			if(carte[i][j] == 4)
-				printf("\033[0m%c  ", clinique);
+				printf(" \033[0m%c ", clinique);
 			if(carte[i][j] == 5)
-				printf("\033[0m%c  ", usine);
+				printf(" \033[0m%c ", usine);
 			if(carte[i][j] == 6)
-				printf("\033[0m%c  ", epicerie);
+				printf(" \033[0m%c ", epicerie);
 			if(carte[i][j] == 7)
-				printf("\033[0m%c  ", champs);
+				printf(" \033[0m%c ", champs);
 			if(carte[i][j] == 8)
-				printf("\033[0m%c  ", garage);
+				printf(" \033[0m%c ", garage);
 			if(carte[i][j] == 9)
-				printf("\033[34m%c  ", survivant);
+				printf(" \033[34m%c ", survivant);
 			if(carte[i][j] == 10)
-				printf("\033[0m%c  ", zombie);
+				printf(" \033[0m%c ", zombie);
 		}
 		Ligne();
 		Ligne();
