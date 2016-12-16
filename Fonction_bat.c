@@ -10,10 +10,7 @@
 #include "perso.h"
 #include "bibliotheque.h"
 
-/**
- \fn void batimentCase(int idCase);
- \brief Fonction qui va indiquer quel type de bâtiment il y a sur cette case
-*/
+
 
 int batiment;
 int ressource;
@@ -24,6 +21,11 @@ int typeArme;
 int idCase;
 int n;
 	
+
+/**
+ \fn void batimentCase();
+ \brief Fonction qui va indiquer quel type de bâtiment il y a sur cette case
+*/
 int batimentCase()
 {
 	/*Traitement*/
@@ -49,7 +51,7 @@ int batimentCase()
 }
 
 /**
- \fn void typeRessourceBatiment(int batiment);
+ \fn void typeRessourceBatiment();
  \brief Fonction qui va définir ce que l'on va trouver dans chaque bâtiments (juste le type pas la quantitée) en fonction du bâtiments
 */
 int typeRessourceBatiment()
@@ -99,7 +101,7 @@ int typeRessourceBatiment()
 }
 
 /**
- \fn void typeRessource(int ressource);
+ \fn void typeRessource();
  \brief Indique quelle ressource à été trouvé
 */
 int typeRessource()
@@ -132,7 +134,7 @@ int typeRessource()
 }
 
 /**
- \fn void nombreRessource(int nomRessource);
+ \fn void nombreRessource();
  \brief Fonction qui retourne le nombre de ressources trouvé dans le bâtiment dont le type à été définie dans la fonction ressource_batiment
 */
 int nombreRessource()
@@ -214,7 +216,7 @@ int chanceArme()
 }
 
 /**
- \fn void afficherArme(int arme);
+ \fn void afficherArme();
  \brief Affiche l'arme obtenue
 */
 int afficherArme() 
