@@ -77,10 +77,10 @@ void initPosPerso3()
 {
 	for(int i=1; i<N; i++)
 	{
-		if(surv[i].etat != 1)
+		if(surv[i].etat == 1)
 		{
-			surv[i].posX = 5;
-			surv[i].posY = 4;
+			surv[i].posX = 4;
+			surv[i].posY = 10;
 		}
 	}
 }
@@ -100,5 +100,3 @@ void carte3()
 	voisinRoute();
 	placerBatiment();
 }
-
-

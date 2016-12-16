@@ -24,6 +24,7 @@ void creerRoute1()
 
 	
 //routes verticales de gauche a  droite
+
 	for(i=0;i<=9;i++)
 	{	
 		j = 3;
@@ -85,10 +86,8 @@ void initPosPerso1()
 	{
 		if(surv[i].etat == 1)
 		{
-			surv[i].posX = 5;
-			surv[i].posY = 4;
-			
-			printf("x = %i  y = %i\n", surv[i].posX, surv[i].posY);
+			surv[i].posX = 2;
+			surv[i].posY = 10;
 		}
 	}
 }

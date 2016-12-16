@@ -19,7 +19,7 @@ int nbRessource;
 int armeTrouver;
 int typeArme;
 int idCase;
-int n;
+int n = 0;
 	
 
 /**
@@ -33,7 +33,7 @@ int batimentCase()
 	{
 		n++;
 	}
-	infoBatiment[n].fouilleBat = 1;
+	printf("typeBat : %i\n", infoBatiment[n].typeBat);
 	idCase = infoBatiment[n].typeBat;
 	switch(idCase)
 	{
@@ -45,7 +45,7 @@ int batimentCase()
 		case 7: idCase = champ;break;
 		case 8: idCase = garage;break;
 	}
-	
+	return idCase;
 
 	
 }
@@ -71,44 +71,35 @@ int typeRessourceBatiment()
 	{
 		case 0: printf("Vous rentrez dans une maison qui n'est pas encore explorée, exploration en cours...\n");
 			ressource = nHasard(6);
-			printf("Objet type: %i\n", ressource);
 			break;
 		case 1: printf("Vous rentrez dans un restaurant qui n'est pas encore exploré, exploration en cours...\n");
 			ressource = tab_restaurant[nHasard(2)];
-			printf("Objet type: %i\n", ressource);
 			break;
 		case 2: printf("Vous rentrez dans une clinique qui n'est pas encore explorée, exploration en cours...\n");
 			ressource = tab_clinique[nHasard(2)];
-			printf("Objet type: %i\n", ressource);
 			break;
 		case 3: printf("Vous rentrez dans une usine qui n'est pas encore explorée, exploration en cours...\n");
 			ressource = tab_usine[nHasard(3)];
-			printf("Objet type: %i\n", ressource);
 			break;
 		case 4: printf("Vous rentrez dans une épicerie qui n'est pas encore explorée, exploration en cours...\n");
 			ressource = tab_epicerie[nHasard(3)];
-			printf("Objet type: %i\n", ressource);
 			break;
 		case 5: printf("Vous rentrez dans un champ qui n'est pas encore exploré, exploration en cours...\n");
 			ressource = tab_champ[nHasard(3)];
-			printf("Objet type: %i\n", ressource);
 			break;
 		case 6: printf("Vous rentrez dans un garage qui n'est pas encore exploré, exploration en cours...\n");
 			ressource = tab_garage[nHasard(3)];
-			printf("Objet type: %i\n", ressource);
 			break;
 	}
+	return ressource;
 }
 
 /**
  \fn void typeRessource();
  \brief Indique quelle ressource à été trouvé
 */
-int typeRessource()
-{
-	/*Initialisation*/
-	int nomRessource;
-	
+void typeRessource()
+{	
 	/*Traitement*/
 	switch(ressource)
 	{
@@ -137,7 +128,7 @@ int typeRessource()
  \fn void nombreRessource();
  \brief Fonction qui retourne le nombre de ressources trouvé dans le bâtiment dont le type à été définie dans la fonction ressource_batiment
 */
-int nombreRessource()
+void nombreRessource()
 {
 	/*Initialisation*/
 	int j;
@@ -213,13 +204,14 @@ int chanceArme()
 	{
 		arme = 7;
 	}
+	return arme;
 }
 
 /**
  \fn void afficherArme();
  \brief Affiche l'arme obtenue
 */
-int afficherArme() 
+void afficherArme() 
 {
 	/*Initialisation*/
 	int typeArme;
@@ -261,15 +253,18 @@ void actionFouiller(int i, int j)
  
  	//HasardInit();
 	srand(time(NULL));
+	printf("%i %i\n", i, j);
 	
 	//type du batiment(2 à 8)
 	batiment = batimentCase();
 	ressource = typeRessourceBatiment();
-	nomRessource = typeRessource();
-	nbRessource = nombreRessource();
+	typeRessource();
+	nombreRessource();
 	if (nomRessource == 3)
 	{
 		typeArme = chanceArme();
-		armeTrouver = afficherArme();
+		afficherArme();
  	}
+ 	infoBatiment[n].fouilleBat = 1;
+ 	n = 0;
 }

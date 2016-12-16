@@ -258,13 +258,15 @@ int verifierCarte(int x, int y)
 	//Assert1("Probleme parametre verifierRoute", x==surv[1].posX+1);
 	if(mat[x][y] == 1)//En utilisant la matrice mat on a uniquement les routes
 	{
-		Assert1("Probleme if verifier route", carte[x][y] == 1);
+		/*Assert1("Probleme if verifier route", carte[x][y] == 1);*/
 		return 1;	
 	}
 	//Cas si on cherche un batiment
-	Assert1("Probleme carte > 1", carte[x][y] > 1);
+	/*Assert1("Probleme carte > 1", carte[x][y] > 1);
 	Assert1("Probleme carte < 10", carte[x][y] != 10);
-	Assert1("Probleme mat = 0", mat[x][y] == 2);
+	Assert1("Probleme mat = 0", mat[x][y] == 2);*/
+	if(carte[x][y] == 9 && carte[x][y] == 1)
+		return 1;
 	if(carte[x][y] > 1 && carte[x][y] < 10 && mat[x][y] == 2)
 	{
 		for(i=0; i<Z; i++)
@@ -295,9 +297,23 @@ int verifierCarte(int x, int y)
 void verifierPerso(int i)
 {
 	int j;
+	int n = 0;
 	for(j=0; j<N; j++)
 	{
-		if(surv[j].posX != surv[i].posX && surv[j].posY != surv[i].posY && j != i)
+		//Vérifie s'il y a un survivant sur la même case et si c'est une route
+		if(surv[j].posX != surv[i].posX && surv[j].posY != surv[i].posY && j != i && mat[surv[i].posX][surv[i].posY] == 1)
 			carte[surv[i].posX][surv[i].posY] = 1;
+		//Vérifie
+		else
+		{
+			while(surv[i].posX != infoBatiment[n].posX && surv[i].posY != infoBatiment[n].posY)
+			{
+				n++;
+			}
+			if(mat[surv[i].posX][surv[i].posY] == 2)
+				carte[surv[i].posX][surv[i].posY] = infoBatiment[n].typeBat;
+			else
+				carte[surv[i].posX][surv[i].posY] = 1;
+		}			
 	}
 }

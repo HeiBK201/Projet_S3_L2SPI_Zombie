@@ -47,7 +47,7 @@ void creerRoute8()
 	}
 	for(i=5;i<=8;i++)
 	{
-		i = 8;
+		j = 8;
 		mat[i][j]=1;
 	}
 	for(i=3;i<=5;i++)
@@ -75,10 +75,10 @@ void initPosPerso8()
 {
 	for(int i=1; i<N; i++)
 	{
-		if(surv[i].etat != 1)
+		if(surv[i].etat == 1)
 		{
 			surv[i].posX = 5;
-			surv[i].posY = 4;
+			surv[i].posY = 0;
 		}
 	}
 }
@@ -98,6 +98,3 @@ void carte8()
 	voisinRoute();
 	placerBatiment();
 }
-
-
-

@@ -77,9 +77,9 @@ void initPosPerso4()
 {
 	for(int i=1; i<N; i++)
 	{
-		if(surv[i].etat != 1)
+		if(surv[i].etat == 1)
 		{
-			surv[i].posX = 5;
+			surv[i].posX = 0;
 			surv[i].posY = 4;
 		}
 	}
@@ -100,5 +100,3 @@ void carte4()
 	voisinRoute();
 	placerBatiment();
 }
-
-
