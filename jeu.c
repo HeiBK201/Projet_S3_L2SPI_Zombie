@@ -114,18 +114,20 @@ void introduction()
 
 void credit()
 {
-	printf("Tout fait par moi\n");
+	printf("Jeu réalisé dans le carde du projet de S3 de la L2SPI-2016-2017\n");
+	Ligne();
+	printf("Écrit par Tristan Bouquet\n");
+	printf("Réalisé par Tristan Bouquet, Mehdi Cohen, Alexandre Sadonnet\n");
 }
 
 void menu()
 {
-	system("clear");
-	
 	char commande[20];
 	
 	
 	do//Liste des actions du menu
 	{
+		system("clear");
 		printf("	+--------------------------------------------------------------------------------------+\n");
 		printf("	| ▇▇▇▇▇                       ▇▇▇▇▇                                                    |\n");
 		printf("	|     ▇                         ▇                                                      |\n");
@@ -139,16 +141,18 @@ void menu()
 		printf("		-Nouvelle partie				-Charger partie\n");
 		Ligne();
 		printf("		-Crédits					-Quitter\n");
+		Ligne();
+		printf("Votre choix :")
 		
 		fgets(commande, sizeof commande, stdin);
 	
-		if(strcmp(commande, "nouveau\n") == 0 || strcmp(commande, "1\n") == 0)
+		if(strcmp(commande, "nouveau\n") == 0 || strcmp(commande, "nouvelle\n") || strcmp(commande, "1\n") == 0)
 			introduction();
 		
 		if(strcmp(commande, "charger\n") == 0 || strcmp(commande, "2\n") == 0)
 			printf("La sauvegarde sera bientôt disponible, nous sommes en train de fouetter le responsable de ce retard\n");
 			
-		if(strcmp(commande, "crédits\n") == 0 || strcmp(commande, "3\n") == 0)
+		if(strcmp(commande, "credits\n") == 0 || strcmp(commande, "3\n") == 0)
 			credit();
 			
 		if(strcmp(commande, "quitter\n") == 0 || strcmp(commande, "4\n") == 0)
