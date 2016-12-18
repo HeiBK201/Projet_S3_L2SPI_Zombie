@@ -126,7 +126,7 @@ void typeRessource()
 
 /**
  \fn void nombreRessource();
- \brief Fonction qui retourne le nombre de ressources trouvé dans le bâtiment dont le type à été définie dans la fonction ressource_batiment
+ \brief Fonction qui retourne le nombre de ressources trouvé dans le bâtiment dont le type à été définie dans la fonction ressource_batiment et qui ajoute cette quantité dans l'inventaire
 */
 void nombreRessource()
 {
