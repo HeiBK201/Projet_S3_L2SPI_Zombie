@@ -249,10 +249,9 @@ void afficherCarte()
 	printf("\033[0m");
 }
 
- //->À modifier pour les autres bâtiments et les survivants dans les bâtiments
 /**
 \fn int verifierCarte(int x, int y);
-\brief Vérifie si là où le joueur veut aller il y a bien une route ou un survivant
+\brief Vérifie si là où le joueur veut aller il y a bien une route, un bâtiment ou un survivant
 */
 int verifierCarte(int x, int y)
 {
@@ -292,10 +291,9 @@ int verifierCarte(int x, int y)
 	}		
 }
 
- //-> Modifier pour afficher les autres bâtiments après avoir fait fouille
 /**
 \fn void verifierPerso(int i);
-\brief Vérifie s'il y a un personnage sur la même case qu'un autre, Affiche une route à l'ancienne place du personnage
+\brief Vérifie s'il y a un personnage sur la même case qu'un autre, Affiche le bâtiment ou la route correspondant à la case après le depart du personnage
 */
 void verifierPerso(int i)
 {
