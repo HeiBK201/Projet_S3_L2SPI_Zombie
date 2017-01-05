@@ -142,7 +142,7 @@ void menu()
 		Ligne();
 		printf("		-Crédits					-Quitter\n");
 		Ligne();
-		printf("Votre choix :")
+		printf("Votre choix :");
 		
 		fgets(commande, sizeof commande, stdin);
 	
