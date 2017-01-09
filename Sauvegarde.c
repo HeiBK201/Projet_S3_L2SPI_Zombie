@@ -1,6 +1,7 @@
 #include "Outil.h"
 #include "bibliotheque.h"
 
+
 // Liste de éléments à sauvegarder
 /*
 Carte actuelle
@@ -64,7 +65,7 @@ void fichiersCharger()
 //Ecriture dans les fichiers lorsque l'on demande la commande "enregistrer"
 
 //Pour la carte
-void enregistrerCarte()
+void enregistrerPartie()
 {	
 	/*Initialisation*/
 	int i, j;
@@ -74,18 +75,18 @@ void enregistrerCarte()
 	{
 		for(j = 0; j < N; j++)
 		{
+			
 			fscanf(ficCarte, "%i ", &idCase);
 		}
 	}
-}
-//Pour le numéro du tour
 
-int nbTour;
-fscanf(ficTour, "%i", &nbTour);
+	//Pour le numéro du tour
 
-//Pour les survivants
-void enregistrerSurvivant()
-{
+	int nbTour;
+	fscanf(ficTour, "%i", &nbTour);
+
+	//Pour les survivants
+
 	/*Initialisation*/
 	int j, hp, attaque, nb_materiaux, nb_soins, nb_vivres, arme, etat, deplacement, action, posX, posY;
 
@@ -116,12 +117,11 @@ void enregistrerSurvivant()
 		fscanf(ficSurvivant, "%i ", &posX);
 		fscanf(ficSurvivant, "%i ", &posY);
 	}
-}
+
 	
 
 //Pour les zombies
-void enregistrerZombie()
-{
+
 	/*Initialisation*/
 	int i, hp, attaque, etat, posX, posY;
 	
@@ -140,19 +140,17 @@ void enregistrerZombie()
 		fscanf(ficZombie, "%i ", &posX);
 		fscanf(ficZombie, "%i ", &posY);
 	}
-}
+
 //Pour l'inventaire
 
-int materiaux, vivre, soin;
+	int materiaux, vivre, soin;
 
-fscanf(ficInventaire, "%i ", &materiaux);
-fscanf(ficInventaire, "%i ", &vivre);
-fscanf(ficInventaire, "%i ", &soin);
+	fscanf(ficInventaire, "%i ", &materiaux);
+	fscanf(ficInventaire, "%i ", &vivre);
+	fscanf(ficInventaire, "%i ", &soin);
 
 
-//Pour le bus et les améliorations
-void enregistrerAmelioration()
-{
+
 	/*Initialisation*/
 	int hp_bus, entrepot_bus, survivant_max_bus, consoV_bus, consoS_bus, barr_bus, pareB_bus, blind_bus, infirm_bus, cuisine_bus, couch_bus, entrepot_bus;
 	hp_bus = bus.hp;
@@ -181,14 +179,16 @@ void enregistrerAmelioration()
 	fscanf(ficBus, "%i ", cuisine_bus);
 	fscanf(ficBus, "%i ", couch_bus);
 	fscanf(ficBus, "%i ", modif_entrepot_bus);
-}
 
+
+	
+}
 //Lecture dans les fichiers lorsque l'on demande la commande "charger la partie"
 
 
 	
 //Pour la carte
-void LireCarte()
+void chargerPartie()
 {
 	/*Initialisation*/
 	int i, j;
@@ -202,7 +202,7 @@ void LireCarte()
 			fprintf(ficCarte, "%i ", &idCase);
 		}
 	}
-}
+
 
 //Pour le numéro du tour
 
@@ -227,4 +227,4 @@ void LireCarte()
 //Pour les améliorations
 
 
-
+}
