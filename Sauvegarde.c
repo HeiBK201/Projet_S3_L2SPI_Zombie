@@ -15,6 +15,46 @@ Informations bus
 Enregistrement dans des fichier txt
 */
 
+/*Initialisation*/
+	int x
+	int y;
+
+	int nbTour;
+
+	int j; 
+	int hp_surv[j];
+	int attaque_surv[j];
+	int nb_materiaux_surv[j];
+	int nb_soins_surv[j];
+	int nb_vivres_surv[j];
+	int arme_surv[j];
+	int etat_surv[j];
+	int deplacement_surv[j];
+	int action_surv[j];
+	int posX_surv[j];
+	int posY_surv[j];
+
+	int i;
+	int hp_zombie[i];
+	int attaque_zombie[i];
+	int etat_zombie[i];
+	int posX_zombie[i];
+	int posY_zombie[i];
+	
+	int hp_bus = bus.hp;
+	int entrepot_bus = bus.entrepot;
+	int survivant_max_bus = bus.survivant_max;
+	int consoV_bus = bus.consoV;
+	int consoS_bus = bus.consoS;
+	int barr_bus = modif.barr;
+	int pareB_bus = modif.pareB;
+	int blind_bus = modif.blind;
+	int infirm_bus = modif.infirm;
+	int cuisine_bus = modif.cuisine;
+	int couch_bus = modif.couch;
+	int modif_entrepot_bus = modif.entrepot;
+
+
 void initFichier()
 {
 
@@ -64,16 +104,15 @@ void fichiersCharger()
 	 
 //Ecriture dans les fichiers lorsque l'on demande la commande "enregistrer"
 
-//Pour la carte
-void enregistrerPartie()
-{	
-	/*Initialisation*/
-	int i, j;
 
-	/*Traitement*/
-	for(i = 0; i < N; i++)
+void enregistrerPartie()
+{		
+	
+	//Pour la carte
+	
+	for(x = 0; x < N; x++)
 	{
-		for(j = 0; j < N; j++)
+		for(y = 0; y < N; y++)
 		{
 			
 			fscanf(ficCarte, "%i ", &idCase);
@@ -82,91 +121,52 @@ void enregistrerPartie()
 
 	//Pour le numéro du tour
 
-	int nbTour;
 	fscanf(ficTour, "%i", &nbTour);
 
 	//Pour les survivants
 
-	/*Initialisation*/
-	int j, hp, attaque, nb_materiaux, nb_soins, nb_vivres, arme, etat, deplacement, action, posX, posY;
-
-	/*Traitement*/
 	for(j = 1; j <= N; j++)
 	{
-		hp = surv[j].hp;
-		attaque = surv[j].attaque;
-		nb_materiaux = surv[j].nb_materiaux;
-		nb_soins = surv[j].nb_soins;
-		nb_vivres = surv[j].nb_vivres;
-		arme = surv[j].arme;
-		etat = surv[j].etat;
-		deplacement = surv[j].deplacement;
-		action = surv[j].action;
-		posX = surv[j].posX;
-		posY = surv[j].posY;
+		hp_surv[j] = surv[j].hp;
+		attaque_surv[j] = surv[j].attaque;
+		nb_materiaux_surv[j] = surv[j].nb_materiaux;
+		nb_soins_surv[j] = surv[j].nb_soins;
+		nb_vivres_surv[j] = surv[j].nb_vivres;
+		arme_surv[j] = surv[j].arme;
+		etat_surv[j] = surv[j].etat;
+		deplacement_surv[j] = surv[j].deplacement;
+		action_surv[j] = surv[j].action;
+		posX_surv[j] = surv[j].posX;
+		posY_surv[j] = surv[j].posY;
 
-		fscanf(ficSurvivant, "%i ", &hp);
-		fscanf(ficSurvivant, "%i ", &attaque);
-		fscanf(ficSurvivant, "%i ", &nb_materiaux);
-		fscanf(ficSurvivant, "%i ", &nb_soins);
-		fscanf(ficSurvivant, "%i ", &nb_vivres);
-		fscanf(ficSurvivant, "%i ", &arme);
-		fscanf(ficSurvivant, "%i ", &etat);
-		fscanf(ficSurvivant, "%i ", &deplacement);
-		fscanf(ficSurvivant, "%i ", &action);
-		fscanf(ficSurvivant, "%i ", &posX);
-		fscanf(ficSurvivant, "%i ", &posY);
+		fscanf(ficSurvivant, "%i %i %i %i %i %i %i %i %i %i %i", &hp_surv[j], &attaque_surv[j], &nb_materiaux_surv[j], &nb_soins_surv[j], &nb_vivres_surv[j], &arme_surv[j], &etat_surv[j], &deplacement_surv[j], &action_surv[j], &posX_surv[j], &posY_surv[j]);
 	}
 
 	
 
-//Pour les zombies
-
-	/*Initialisation*/
-	int i, hp, attaque, etat, posX, posY;
+	//Pour les zombies
 	
-	/*Traitement*/
 	for(i = 0; i < Z; i++)
 	{
-		hp = zomb[i].hp;
-		attaque = zomb[i].attaque;
-		etat = zomb[i].etat;
-		posX = zomb[i].posX;
-		posY = zomb[i].posY;
+		hp_zombie[i] = zomb[i].hp;
+		attaque_zombie[i] = zomb[i].attaque;
+		etat_zombie[i] = zomb[i].etat;
+		posX_zombie[i] = zomb[i].posX;
+		posY_zombie[i] = zomb[i].posY;
 
-		fscanf(ficZombie, "%i ", &hp);
-		fscanf(ficZombie, "%i ", &attaque);
-		fscanf(ficZombie, "%i ", &etat);
-		fscanf(ficZombie, "%i ", &posX);
-		fscanf(ficZombie, "%i ", &posY);
+		fscanf(ficZombie, "%i %i %i %i %i", &hp_zombie[i], &attaque_zombie[i], &etat_zombie[i], &posX_zombie[i], &posY_zombie[i]);
 	}
 
-//Pour l'inventaire
+	//Pour l'inventaire
 
 	int materiaux, vivre, soin;
 
 	fscanf(ficInventaire, "%i ", &materiaux);
 	fscanf(ficInventaire, "%i ", &vivre);
 	fscanf(ficInventaire, "%i ", &soin);
-
-
-
-	/*Initialisation*/
-	int hp_bus, entrepot_bus, survivant_max_bus, consoV_bus, consoS_bus, barr_bus, pareB_bus, blind_bus, infirm_bus, cuisine_bus, couch_bus, entrepot_bus;
-	hp_bus = bus.hp;
-	entrepot_bus = bus.entrepot;
-	survivant_max_bus = bus.survivant_max;
-	consoV_bus = bus.consoV;
-	consoS_bus = bus.consoS;
-	barr_bus = modif.barr;
-	pareB_bus = modif.pareB;
-	blind_bus = modif.blind;
-	infirm_bus = modif.infirm;
-	cuisine_bus = modif.cuisine;
-	couch_bus = modif.couch;
-	modif_entrepot_bus = modif.entrepot;
-
-	/*Traitement*/
+	
+	
+	
 	fscanf(ficBus, "%i ", hp_bus);
 	fscanf(ficBus, "%i ", entrepot_bus);
 	fscanf(ficBus, "%i ", survivant_max_bus);
