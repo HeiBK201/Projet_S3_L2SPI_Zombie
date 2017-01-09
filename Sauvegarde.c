@@ -1,4 +1,5 @@
 #include "Outil.h"
+#include "bibliotheque.h"
 
 // Liste de éléments à sauvegarder
 /*
@@ -13,43 +14,53 @@ Informations bus
 Enregistrement dans des fichier txt
 */
 
+void initFichier()
+{
 
-FILE * ficCarte;
-FILE * ficTour;
-FILE * ficSurvivant;
-FILE * ficZombie;
-FILE * ficInventaire;
-FILE * ficBus;
-FILE * ficAmelio;
+	FILE * ficCarte;
+	FILE * ficTour;
+	FILE * ficSurvivant;
+	FILE * ficZombie;
+	FILE * ficInventaire;
+	FILE * ficBus;
+	FILE * ficAmelio;
+}
 
+void fichiersEnregistrer()
+{
 
-//Pour enregistrer les données
-ficCarte = fopen("carte.txt", "w");
-ficTour = fopen("tour.txt", "w");
-ficSurvivant = fopen("survivant.txt", "w");
-ficZombie = fopen("zombie.txt", "w");
-ficInventaire = fopen("inventaire.txt", "w");
-ficBus = fopen("bus.txt", "w");
-ficAmelio = fopen("amelioration.txt", "w");
+	//Pour enregistrer les données
+	ficCarte = fopen("carte.txt", "w");
+	ficTour = fopen("tour.txt", "w");
+	ficSurvivant = fopen("survivant.txt", "w");
+	ficZombie = fopen("zombie.txt", "w");
+	ficInventaire = fopen("inventaire.txt", "w");
+	ficBus = fopen("bus.txt", "w");
+	ficAmelio = fopen("amelioration.txt", "w");
+}
 
+void fichiersCharger()
 //Pour extraire les données
-ficCarte = fopen("carte.txt", "r");
-ficTour = fopen("tour.txt", "r");
-ficSurvivant = fopen("survivant.txt", "r");
-ficZombie = fopen("zombie.txt", "r");
-ficInventaire = fopen("inventaire.txt", "r");
-ficBus = fopen("bus.txt", "r");
-ficAmelio = fopen("amelioration.txt", "r");
-
-//Fermeture des fichiers
-fclose(ficCarte);
-fclose(ficTour);
-fclose(ficSurvivant);
-fclose(ficZombie);
-fclose(ficInventaire);
-fclose(ficBus);
-fclose(ficAmelio);
-
+	ficCarte = fopen("carte.txt", "r");
+	ficTour = fopen("tour.txt", "r");
+	ficSurvivant = fopen("survivant.txt", "r");
+	ficZombie = fopen("zombie.txt", "r");
+	ficInventaire = fopen("inventaire.txt", "r");
+	ficBus = fopen("bus.txt", "r");
+	ficAmelio = fopen("amelioration.txt", "r");
+	
+ void fermerFichiers()
+ {
+	//Fermeture des fichiers
+	fclose(ficCarte);
+	fclose(ficTour);
+	fclose(ficSurvivant);
+	fclose(ficZombie);
+	fclose(ficInventaire);
+	fclose(ficBus);
+	fclose(ficAmelio);
+ }
+	 
 //Ecriture dans les fichiers lorsque l'on demande la commande "enregistrer"
 
 //Pour la carte
@@ -174,6 +185,8 @@ void enregistrerAmelioration()
 
 //Lecture dans les fichiers lorsque l'on demande la commande "charger la partie"
 
+
+	
 //Pour la carte
 void LireCarte()
 {
